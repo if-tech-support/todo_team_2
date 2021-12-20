@@ -1,11 +1,13 @@
 {
   "recommendations": [
-    "donjayamanne.git-extension-pack",
-    "knisterpeter.vscode-github",
+		"donjayamanne.git-extension-pack",
+		"knisterpeter.vscode-github",
 		"donjayamanne.githistory",
 		"eamodio.gitlens",
 		"mhutchie.git-graph",
 		"gruntfuggly.todo-tree",
-		"alefragnani.project-manager"
-  ]
+		"alefragnani.project-manager",
+		"editorconfig.editorconfig",
+		"stylelint.vscode-stylelint"
+	]
 }
