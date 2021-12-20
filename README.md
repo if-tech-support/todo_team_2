@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todoリスト作成チーム開発（第2期）
+## 開発メンバー
+- 管理： 浅沼
+- リーダー: 
+- レビュワー: 浅沼, メンバー全員
+- 参加メンバー
+  - 
+  - 
+  - 
 
-## Getting Started
+## 使用技術
+- React.js
+- Next.js
 
-First, run the development server:
+## バージョン情報
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+"node": "14.17.0",
+"yarn": "1.22.11",
+"npm": "7.21.0"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## プロジェクトの概要
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Todoリストの作成を通じて、React、Next.jsの基礎、git,Githubの使い方に慣れ、チーム開発を体験する
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 開発ルール
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### git/gitHub
 
-## Learn More
+#### ブランチ命名規則
+  issue番号を必ず含める
+  
+  **＜具体例＞**
+  issue#３　Todoの作成画面の実装　
+  
+  `git checkout -b 3-Todo-Page-Layoout`
 
-To learn more about Next.js, take a look at the following resources:
+#### コミットメッセージ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ #issue番号 + 日本語で端的に 
+  
+例）
+`git commit -m  '#3 Todo作成画面の要素を追加し、レイアウト調整' `
