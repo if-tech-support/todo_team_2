@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import '../styles/globals.scss'
 import {ChakraProvider} from '@chakra-ui/react'
 
