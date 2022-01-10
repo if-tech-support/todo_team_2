@@ -30,6 +30,16 @@
 
 Todoリストの作成を通じて、React、Next.jsの基礎、git,Githubの使い方に慣れ、チーム開発を体験する。
 
+
+## 環境構築手順
+1. `git clone https://github.com/if-tech-support/todo_team_2.git`
+2. リポジトリのディレクトリへ移動
+3. `yarn 　//packageのinstall`
+4. `yarn dev `
+上記を実行し、`http://localhost:3000/`
+以下の画像の画面が表示できるか確認をお願いします。
+![image](https://user-images.githubusercontent.com/24813936/148723807-3b3e571b-6669-4d1c-a96f-d623f9650e09.png)
+
 ## 開発ルール
 
 ### git/gitHub
