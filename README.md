@@ -28,7 +28,7 @@
 
 ## プロジェクトの概要
 
-Todoリストの作成を通じて、React、Next.jsの基礎、git,Githubの使い方に慣れ、チーム開発を体験する
+Todoリストの作成を通じて、React、Next.jsの基礎、git,Githubの使い方に慣れ、チーム開発を体験する。
 
 ## 開発ルール
 
@@ -48,3 +48,5 @@ Todoリストの作成を通じて、React、Next.jsの基礎、git,Githubの使
   
 例）
 `git commit -m  '#3 Todo作成画面の要素を追加し、レイアウト調整' `
+
+test
