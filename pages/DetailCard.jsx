@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react'
 
-export default function Detail() {
+export default function DetailCard() {
   return (
     <VStack
       p={3}
