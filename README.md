@@ -33,15 +33,15 @@
 
 Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する。
 
-
 ## 環境構築手順
+
 1. `git clone https://github.com/if-tech-support/todo_team_2.git`
 2. リポジトリのディレクトリへ移動
-3. `yarn 　//packageのinstall`
+3. `yarn //packageのinstall`
 4. `yarn dev `
-上記を実行し、`http://localhost:3000/`
-以下の画像の画面が表示できるか確認をお願いします。
-![image](https://user-images.githubusercontent.com/24813936/148723807-3b3e571b-6669-4d1c-a96f-d623f9650e09.png)
+   上記を実行し、`http://localhost:3000/`
+   以下の画像の画面が表示できるか確認をお願いします。
+   ![image](https://user-images.githubusercontent.com/24813936/148723807-3b3e571b-6669-4d1c-a96f-d623f9650e09.png)
 
 ## 開発ルール
 
@@ -62,10 +62,3 @@ issue#３　 Todo の作成画面の実装の場合
 
 例）
 `git commit -m '#3 Todo作成画面の要素を追加し、レイアウト調整' `
-
-<<<<<<< HEAD
-text
-=======
-test
-
-> > > > > > > origin
