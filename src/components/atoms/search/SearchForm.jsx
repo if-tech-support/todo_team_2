@@ -1,17 +1,14 @@
-import React,{useState} from 'react';
+import React　from 'react';
 import { Input,InputGroup,InputRightElement,Text,IconButton } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
 const SearchForm =()=>{
-    const [searchText,setSearchText]=useState('');
     return(
         <>
             <Text fontSize="18px" fontWeight="700" fontFamily="Gothic A1" pb={2}>SEARCH</Text>
             <InputGroup w={48}>
                 <Input
                     placeholder='Text'
-                    value={searchText}
-                    onChange={(e)=>setSearchText(e.target.value)}
                     border="1px solid rgba(0, 0, 0, 0.8)" size="md" 
                     
                 />
