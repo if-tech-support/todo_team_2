@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div>
       <Head>
-        
       </Head>
+        <SearchForm />
     </div>
   )
 }
