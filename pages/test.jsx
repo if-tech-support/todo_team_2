@@ -1,12 +1,12 @@
 import React from 'react'
-import MainButtons from './MainButtons'
+import MainButtons from '../src/components/molecules/MainButtons'
 
 function test() {
-    return (
-        <div>
-            <MainButtons/>
-        </div>
-    )
+  return (
+    <div>
+      <MainButtons />
+    </div>
+  )
 }
 
 export default test
