@@ -14,14 +14,9 @@ import {
   Heading,
 } from '@chakra-ui/react'
 
-export const NewTodo = () => {
+export default function NewTodo() {
   return (
     <>
-      {/* <Flex backgroundColor="#68D391" pr={20} pl={20}>
-        <Text fontSize="35px">TODO</Text>
-        <Spacer />
-        <Text>2022/01/01</Text>
-      </Flex> */}
       <Flex
         align="center"
         height="70px"
