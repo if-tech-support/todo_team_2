@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import Test from '../pages/test'
+import TodoListStatus from '../pages/test'
 
 export default function Home() {
   return (
     <div>
       <Head></Head>
-      <Test></Test>
+      <TodoListStatus></TodoListStatus>
     </div>
   )
 }
