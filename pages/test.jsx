@@ -1,9 +1,9 @@
 import React from 'react'
-import SearchStatus from '../src/components/atoms/search/SearchStatus'
+import TodoListChild from '../src/components/atoms/TodoListChild'
 
 const Test = () => {
   return (
-    <SearchStatus></SearchStatus>
+    <TodoListChild></TodoListChild>
   )
 }
 
