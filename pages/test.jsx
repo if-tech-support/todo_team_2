@@ -1,5 +1,5 @@
 import React from 'react'
-import CommentModal from './CommentModal'
+import CommentModal from '../src/components/organisms/Modal/CommentModal'
 
 function test() {
   return (
