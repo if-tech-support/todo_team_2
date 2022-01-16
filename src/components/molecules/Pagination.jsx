@@ -16,7 +16,7 @@ const Pagination = () => {
             bg: 'gray.300',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
@@ -39,7 +39,7 @@ const Pagination = () => {
             color: 'teal.500',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
@@ -62,7 +62,7 @@ const Pagination = () => {
             color: 'teal.500',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
@@ -85,7 +85,7 @@ const Pagination = () => {
             color: 'teal.500',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
@@ -108,7 +108,7 @@ const Pagination = () => {
             color: 'teal.500',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
@@ -131,7 +131,7 @@ const Pagination = () => {
             color: 'teal.500',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
@@ -156,7 +156,7 @@ const Pagination = () => {
             border: '0',
           }}
         >
-          <NextLink href="">
+          <NextLink href="" passHref>
             <Link
               w={'100%'}
               h={'100%'}
