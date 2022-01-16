@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/layout'
 
 const Header = () => {
   return (
-    <Box bg={'green.300'}>
+    <Box bg={'green.300'} mb="16px">
       <Flex width="1080px" mx="auto" py="12px" alignItems="center">
         <Heading fontSize="5xl">TODO</Heading>
         <Spacer />
