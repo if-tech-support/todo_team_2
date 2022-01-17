@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Spacer } from '@chakra-ui/layout'
+import { Box, Container, Flex, Heading, Spacer } from '@chakra-ui/layout'
 import React from 'react'
 import DetailCard from './DetailCard'
 
@@ -6,7 +6,7 @@ export default function detail() {
   return (
     <>
       This is header
-      <Box width="1080px" mx="auto">
+      <Container maxW="container.lg" mx="auto">
         <Flex align="center" mb="16px">
           <Heading fontSize="3xl">SHOW TODO</Heading>
           <Spacer />
@@ -17,7 +17,7 @@ export default function detail() {
           <Spacer />
           <Box>コメントたちが並びます</Box>
         </Flex>
-      </Box>
+      </Container>
     </>
   )
 }
