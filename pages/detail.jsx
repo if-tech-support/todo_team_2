@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Heading, Spacer } from '@chakra-ui/layout'
 import React from 'react'
-import DetailCard from './DetailCard'
+import DetailCard from '../src/components/organisms/Todo/DetailCard'
 
 export default function detail() {
   return (
