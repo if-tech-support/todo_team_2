@@ -8,7 +8,8 @@ export const DetailTextarea = () => {
               <Text
                 fontSize="xl"
                 fontWeight="700"
-                py={3}>
+                pb={1.2}
+                pt={4}>
               DETAIL
               </Text>
               <Textarea
