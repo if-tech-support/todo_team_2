@@ -5,9 +5,7 @@ import {
   Tr,
   Td,
   Button,
-  Select,
-  Flex,
-  Spacer
+  Select
 
 } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
@@ -16,8 +14,6 @@ import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 
 const TodoListChild = () => {
   return (
-  <Flex>
-    <Spacer />
     <Table size='md'>
       <Tbody>
         <Tr>
@@ -41,8 +37,6 @@ const TodoListChild = () => {
         </Tr>
       </Tbody>
     </Table>
-    <Spacer />
-  </Flex>
   )
 }
 
