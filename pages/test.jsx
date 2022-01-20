@@ -8,8 +8,8 @@ export default function comment() {
         <Flex
           bg="green"
           color="white"
-          pr={5}
-          pl={5}
+          pr={20}
+          pl={20}
           borderRadius="8px 8px 0 0"
           h="30px"
           align="center"
@@ -22,7 +22,7 @@ export default function comment() {
             <Text>date</Text>
           </Box>
         </Flex>
-        <Box pr="10px" pl="10px">
+        <Box pr="20px" pl="20px">
           <Text>text</Text>
         </Box>
       </Box>
