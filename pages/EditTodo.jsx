@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/button'
-import { Box, Flex, Stack, Text } from '@chakra-ui/layout'
+import { Box, Flex, Text } from '@chakra-ui/layout'
 import { Stat, StatLabel, StatNumber } from '@chakra-ui/stat'
-// import Header from '../src/components/organisms/Header/Header'
+import Header from '../src/components/organisms/Header/Header'
 import React from 'react'
 import { DetailTextarea } from '../src/components/atoms/input/DetailTextarea'
 import Title from "../src/components/atoms/input/Title"
@@ -10,9 +10,8 @@ import { BackButton } from "../src/components/atoms/button/BackButton"
 export default function EditTodo() {
     return (
         <div>
-            {/* <Header /> */}
+            <Header />
             <Box px="100px" pt={4}>
-                <Stack spacing={1}>
                 <Flex justifyContent="space-between" alignItems="center" pb={5}>
                     <Text
                     as="h1"
@@ -33,7 +32,7 @@ export default function EditTodo() {
                                 lineHeight="1.1"
                                 fontWeight="medium"
                             >
-                                Created at
+                                Created
                             </StatLabel>
                             <StatNumber
                                 fontSize="18px"
@@ -51,7 +50,7 @@ export default function EditTodo() {
                                 fontWeight="medium"
                                 color="gray.800"
                             >
-                                Updated at
+                                Updated
                             </StatLabel>
                             <StatNumber
                                 fontSize="18px"
@@ -76,7 +75,6 @@ export default function EditTodo() {
                         UPDATE
                     </Button>
                 </Flex>
-                </Stack>
             </Box>
         </div>
     )
