@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Flex, Heading, Spacer, Text, VStack } from "@chakra-ui/react"
+import { Box, Container, Flex, Heading, HStack, Spacer, Text, VStack } from "@chakra-ui/react"
 import DetailCard from "../../src/components/organisms/Todo/DetailCard"
 import BackButton from "../../src/components/atoms/button/BackButton"
 import EditButton from "../../src/components/atoms/button/EditButton"
@@ -24,7 +24,7 @@ function index() {
             maxW="container.lg"
         >
             <Flex py="12px">
-                <Heading as="h2" size="2xl">SHOW TODO</Heading> 
+                <Heading as="h3" size="lg">SHOW TODO</Heading> 
                 <Spacer />
                 <Flex width="40%">
                     <CommentButton />
@@ -34,12 +34,12 @@ function index() {
                     <BackButton />
                 </Flex>
             </Flex>
-            <Flex alignItems="center">
+            <HStack spacing={1}>
                 <DetailCard />
                  {/* 以下はダミーのコメント一覧 */}
                 <VStack
-                    mt="5"
-                    h="460"
+                    pt="5"
+                    h="480"
                     w="xl"
                 >
                     <Box
@@ -190,7 +190,7 @@ function index() {
                         </Box>
                     </Box>
                 </VStack>
-            </Flex>
+            </HStack>
             {/* ここにページネーションが入ります */}
         </Container>
     </Box>
