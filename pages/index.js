@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { Heading } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 
