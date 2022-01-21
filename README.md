@@ -22,6 +22,14 @@
 - Next.js (https://github.com/vercel/next.js)
 - chakra-ui (https://github.com/chakra-ui/chakra-ui/)
 
+## 推奨VScode拡張機能
+- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph&ssr=false#qna) コミットの一覧→詳細を閲覧できる 
+- [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) ファイルの履歴などを確認できる
+- [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) 
+- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+
+※　おすすめしたいものがあれば適宜追加する
+
 ## バージョン情報
 
 voltaで管理、volta以外をお使いの方は自身で以下のバージョンにあわせてください。
