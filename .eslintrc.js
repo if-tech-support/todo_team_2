@@ -4,7 +4,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'next/core-web-vitals',
-    'plugin:prettier/recommended',
   ],
   plugins: ['react'],
   env: {
@@ -27,5 +26,6 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/no-children-prop': 'off'
   },
 }
