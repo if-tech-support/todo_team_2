@@ -5,6 +5,7 @@ import SearchForm from '../src/components/atoms/search/SearchForm'
 import SearchStatus from '../src/components/atoms/search/SearchStatus'
 import { SearchPriority } from '../src/components/atoms/search/SearchPriority'
 import TodoTable from '../src/components/organisms/Todo/TodoTable'
+import { ResetButton } from '../src/components/atoms/button/ResetButton'
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
           TODO LIST
         </Heading>
         <Flex mb={8}>
-          <HStack spacing="24px">
+          <HStack spacing="24px" align="flex-end">
             <Box>
               <SearchForm />
             </Box>
@@ -25,6 +26,7 @@ export default function Home() {
             <Box>
               <SearchPriority />
             </Box>
+            <ResetButton />
           </HStack>
           <Spacer />
           <Box w="15%">
