@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, Spacer, Text } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 
 export default function comment() {
   return (
@@ -14,21 +14,17 @@ export default function comment() {
         <Flex
           bg="green"
           color="white"
-          pr={20}
-          pl={20}
+          pr={5}
+          pl={5}
           borderRadius="8px 8px 0 0"
           h="30px"
           align="center"
+          justifyContent="space-between"
         >
-          <Box>
-            <Text>name</Text>
-          </Box>
-          <Spacer />
-          <Box>
-            <Text>date</Text>
-          </Box>
+          <Text>name</Text>
+          <Text>date</Text>
         </Flex>
-        <Box pr="20px" pl="20px">
+        <Box pr={4} pl={4}>
           <Text>text</Text>
         </Box>
       </Box>
