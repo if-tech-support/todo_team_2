@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Container maxW="container.lg">
+      <Container maxW="container.xl">
         <Heading as="h2" size="lg" my={2}>
           TODO LIST
         </Heading>
@@ -29,7 +29,7 @@ export default function Home() {
             <ResetButton />
           </HStack>
           <Spacer />
-          <Box w="15%">
+          <Box w="150px">
             <MainButtons />
           </Box>
         </Flex>
