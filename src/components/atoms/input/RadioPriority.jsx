@@ -6,7 +6,7 @@ const RadioPriority = () => {
       <Text fontSize="xl" fontWeight="700">
         PRIORITY
       </Text>
-      <RadioGroup>
+      <RadioGroup fontWeight="700">
         <Stack direction="row" spacing={8}>
           <Radio value="High">High</Radio>
           <Radio value="Middle">Middle</Radio>
