@@ -1,4 +1,5 @@
 import { Table, Tbody, Thead, Th, Tr, Td } from '@chakra-ui/react'
+import TodoListChild from '../../atoms/TodoListChild'
 
 export default function TodosTable() {
   return (
@@ -13,32 +14,8 @@ export default function TodosTable() {
           <Th>Action</Th>
         </Tr>
       </Thead>
-      <Tbody>
-        <Tr>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-        </Tr>
-        <Tr>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-        </Tr>
-        <Tr>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-          <Td>Test</Td>
-        </Tr>
-      </Tbody>
+
+      <TodoListChild />
     </Table>
   )
 }
