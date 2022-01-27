@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Stack,
   Text,
@@ -12,11 +12,38 @@ import {
   Spacer,
   HStack,
   Heading,
+  FormControl,
+  FormLabel,
 } from '@chakra-ui/react'
 
+import { todoStatefunction } from '../../src/hooks/userState'
+
 export default function NewTodo() {
+  const { todo: todo, setTodo: setTodo } = todoStatefunction()
+  const [title, setTitle] = useState('')
+  const [detail, setDetail] = useState('')
+  const [priority, setPriority] = useState()
+  console.log(title)
+  console.log(priority)
+  console.log(detail)
+  console.log(todo)
+
+  const onSubmit = () => {
+    // e.preventDefault()
+    console.log('click')
+    setTodo(todo, {
+      title,
+      detail,
+      priority,
+      status: 'not_started',
+      create: 'timeStamp',
+    })
+    console.log(todo)
+  }
+
   return (
     <>
+      {todo}
       <Flex
         align="center"
         height="70px"
@@ -40,30 +67,68 @@ export default function NewTodo() {
               Back
             </Button>
           </Flex>
-          <Text fontSize="1xl">TITLE</Text>
-          <Input placeholder="" size="md" />
-          <Text fontSize="1xl">DETAIL</Text>
-          <Textarea placeholder="" h="200px" />
-
-          <Text fontSize="1xl">PRIORITY</Text>
-          <RadioGroup defaultValue="high">
-            <Stack direction="row">
-              <Radio value="high">High</Radio>
-              <Radio value="middle">Middle</Radio>
-              <Radio value="low">Low</Radio>
-            </Stack>
-          </RadioGroup>
-
-          <Flex>
-            <HStack spacing="24px" pos="absolute" right="20">
-              <Button colorScheme="pink" w="80px" borderRadius="50">
-                DRAFT
-              </Button>
-              <Button colorScheme="green" w="80px" borderRadius="50">
-                CREATE
-              </Button>
-            </HStack>
-          </Flex>
+          <form>
+            <FormControl>
+              <FormLabel htmlFor="title">TITLE</FormLabel>
+              <Input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </FormControl>
+            <FormControl mt="24px">
+              <FormLabel htmlFor="detail">Detail</FormLabel>
+              <Textarea
+                id="detaile"
+                type="text"
+                size="lg"
+                height="240px"
+                value={detail}
+                onChange={(e) => setDetail(e.target.value)}
+              />
+            </FormControl>
+            <FormControl mt="24px">
+              <FormLabel as="legend">PRIORITY</FormLabel>
+              <RadioGroup defaultValue="high">
+                <HStack spacing="24px">
+                  <Radio
+                    value="high"
+                    onChange={(e) => setPriority(e.target.value)}
+                  >
+                    High
+                  </Radio>
+                  <Radio
+                    value="middle"
+                    onChange={(e) => setPriority(e.target.value)}
+                  >
+                    Middle
+                  </Radio>
+                  <Radio
+                    value="low"
+                    onChange={(e) => setPriority(e.target.value)}
+                  >
+                    Low
+                  </Radio>
+                </HStack>
+              </RadioGroup>
+            </FormControl>
+            <Flex>
+              <HStack spacing="24px" pos="absolute" right="20">
+                <Button colorScheme="pink" w="80px" borderRadius="50">
+                  DRAFT
+                </Button>
+                <Button
+                  colorScheme="green"
+                  w="80px"
+                  borderRadius="50"
+                  onClick={() => onSubmit()}
+                >
+                  CREATE
+                </Button>
+              </HStack>
+            </Flex>
+          </form>
         </Stack>
       </Box>
     </>
