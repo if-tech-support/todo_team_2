@@ -5,7 +5,7 @@ const todoState = atom({
   default: null,
 })
 
-export function todoStatefunction() {
+export function TodoState() {
   const [todo, setTodo] = useRecoilState(todoState)
   return { todo, setTodo }
 }
