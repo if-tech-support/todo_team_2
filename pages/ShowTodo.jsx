@@ -12,7 +12,6 @@ import {
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
-import EditButton from '../src/components/atoms/button/EditButton'
 import CommentButton from '../src/components/atoms/button/CommentButton'
 
 function index() {
@@ -27,10 +26,8 @@ function index() {
           </Heading>
           {/* 以上には現在プルリク中のHeadline.jsxが入ります*/}
           <Spacer />
-          <Flex width="40%">
+          <Flex width="25%">
             <CommentButton />
-            <Spacer />
-            <EditButton />
             <Spacer />
             <BackButton />
           </Flex>

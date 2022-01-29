@@ -1,5 +1,7 @@
 import { Button } from '@chakra-ui/button'
 import React from 'react'
+import { Icon } from '@chakra-ui/react'
+import { BiPencil } from 'react-icons/bi'
 
 const EditButton = () => {
   return (
@@ -12,6 +14,7 @@ const EditButton = () => {
       h="40px"
       variant="solid"
       _hover={{ backgroundColor: 'green.400' }}
+      rightIcon={<Icon as={BiPencil} />}
     >
       Edit
     </Button>
