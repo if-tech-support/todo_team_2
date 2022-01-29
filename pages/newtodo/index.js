@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import Router from 'next/router'
 import {
   Stack,
-  Text,
   Input,
   RadioGroup,
   Radio,
@@ -16,34 +16,48 @@ import {
   FormLabel,
 } from '@chakra-ui/react'
 
-import { todoStatefunction } from '../../src/hooks/userState'
+import { TodoState } from '../../src/hooks/TodoState'
+import { Now } from '../../src/hooks/Now'
 
 export default function NewTodo() {
-  const { todo: todo, setTodo: setTodo } = todoStatefunction()
+  // TodoState.jsで定義したtosos,setTodosを呼び出し
+  const { todos, setTodos } = TodoState()
+
+  // Now.jsで定義したcurerntTimeを呼び出し
+  const { currentTime } = Now()
+
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
-  const [priority, setPriority] = useState()
-  console.log(title)
-  console.log(priority)
-  console.log(detail)
-  console.log(todo)
+  const [priority, setPriority] = useState('High')
 
+  // 現在のTodosの要素数を取得
+  const quantity = Object.keys(todos).length
+  // 新しいTodoのidを定義
+  const id = quantity + 1
+
+  console.log(todos)
+
+  // Todosに新しいTodoを追加
   const onSubmit = () => {
-    // e.preventDefault()
-    console.log('click')
-    setTodo(todo, {
-      title,
-      detail,
-      priority,
-      status: 'not_started',
-      create: 'timeStamp',
-    })
-    console.log(todo)
+    const newTodos = [
+      {
+        id,
+        title,
+        detail,
+        priority,
+        status: 'not_started',
+        created_day: currentTime,
+      },
+      ...todos,
+    ]
+    setTodos(newTodos)
+    setTitle('')
+    setDetail('')
+    Router.push('/')
   }
 
   return (
     <>
-      {todo}
       <Flex
         align="center"
         height="70px"
@@ -61,7 +75,9 @@ export default function NewTodo() {
       <Box p={10} mr={10} ml={10} height="100vh">
         <Stack spacing={3}>
           <Flex>
-            <Text fontSize="2xl">NEW TODO</Text>
+            <Heading as="h2" size="lg">
+              NEW TODO
+            </Heading>
             <Spacer />
             <Button colorScheme="green" w="80px" borderRadius="50">
               Back
