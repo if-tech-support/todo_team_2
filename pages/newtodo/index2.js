@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import {
   Stack,
   Text,
@@ -16,34 +16,35 @@ import {
   FormLabel,
 } from '@chakra-ui/react'
 
-import { todoStatefunction } from '../../src/hooks/userState'
+import { todoTitle, todoDetail, todoPriority} from '../../src/hooks/TodoState'
+import { useRecoilState } from "recoil"
+import Link from 'next/link'
 
 export default function NewTodo() {
-  const { todo: todo, setTodo: setTodo } = todoStatefunction()
-  const [title, setTitle] = useState('')
-  const [detail, setDetail] = useState('')
-  const [priority, setPriority] = useState()
+  const [ title, setTitle] = useRecoilState(todoTitle)
+  const [ detail, setDetail] = useRecoilState(todoDetail)
+  const [ priority, setPriority] = useRecoilState(todoPriority)
+
   console.log(title)
   console.log(priority)
   console.log(detail)
-  console.log(todo)
 
-  const onSubmit = () => {
+  // const onSubmit = () => {
     // e.preventDefault()
-    console.log('click')
-    setTodo(todo, {
-      title,
-      detail,
-      priority,
-      status: 'not_started',
-      create: 'timeStamp',
-    })
-    console.log(todo)
-  }
+  //   console.log('click')
+  //   setTodo(todo, {
+  //     title,
+  //     detail,
+  //     priority,
+  //     status: 'not_started',
+  //     create: 'timeStamp',
+  //   })
+  //   console.log(todo)
+  // }
 
   return (
     <>
-      {todo}
+      {/* {todo} */}
       <Flex
         align="center"
         height="70px"
@@ -80,7 +81,7 @@ export default function NewTodo() {
             <FormControl mt="24px">
               <FormLabel htmlFor="detail">Detail</FormLabel>
               <Textarea
-                id="detaile"
+                id="detail"
                 type="text"
                 size="lg"
                 height="240px"
@@ -118,14 +119,24 @@ export default function NewTodo() {
                 <Button colorScheme="pink" w="80px" borderRadius="50">
                   DRAFT
                 </Button>
-                <Button
+                <Link href="/">
+                  {/* "/"は一覧ページへのリンク */}
+                  <button
+                    colorScheme="green"
+                    w="80px"
+                    borderRadius="50"
+                  >
+                    Create
+                  </button>
+                </Link>
+                {/* <Button
                   colorScheme="green"
                   w="80px"
                   borderRadius="50"
                   onClick={() => onSubmit()}
                 >
                   CREATE
-                </Button>
+                </Button> */}
               </HStack>
             </Flex>
           </form>
