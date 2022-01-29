@@ -16,10 +16,10 @@ import {
   FormLabel,
 } from '@chakra-ui/react'
 
-import { todoStatefunction } from '../../src/hooks/userState'
+import TodoState from '../../src/hooks/TodoState'
 
 export default function NewTodo() {
-  const { todo: todo, setTodo: setTodo } = todoStatefunction()
+  const { todo: todo, setTodo: setTodo } = TodoState()
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
   const [priority, setPriority] = useState()
