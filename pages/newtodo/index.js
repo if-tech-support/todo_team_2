@@ -25,7 +25,6 @@ export default function NewTodo() {
 
   // Now.jsで定義したcurerntTimeを呼び出し
   const { currentTime } = Now()
-
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
   const [priority, setPriority] = useState('High')
