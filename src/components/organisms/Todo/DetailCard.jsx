@@ -9,6 +9,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
+import EditButton from '../../atoms/button/EditButton'
 
 export default function DetailCard() {
   return (
@@ -37,19 +38,22 @@ export default function DetailCard() {
         </Box>
       </Box>
       <Spacer />
-      <Flex justifyContent="flex-end" w="full" p={4}>
-        <Box mr={5}>
+      <Flex pt={3} w="full">
+        <Flex justifyContent="flex-end" w="full" p={4}>
+          <Box>
+            <EditButton />
+          </Box>
+          ‌ <Spacer />
           <Stat>
-            <StatLabel>Updated at</StatLabel>
-            <StatNumber>2022-01-01 18:55</StatNumber>
+            <StatLabel fontSize="sm">Updated at</StatLabel>
+            <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
           </Stat>
-        </Box>
-        <Box>
+          <Spacer />
           <Stat>
-            <StatLabel>Created at</StatLabel>
-            <StatNumber>2022-01-01 18:55</StatNumber>
+            <StatLabel fontSize="sm">Created at</StatLabel>
+            <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
           </Stat>
-        </Box>
+        </Flex>
       </Flex>
     </VStack>
   )

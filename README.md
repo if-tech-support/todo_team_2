@@ -22,18 +22,24 @@
 - Next.js (https://github.com/vercel/next.js)
 - chakra-ui (https://github.com/chakra-ui/chakra-ui/)
 
-## 推奨VScode拡張機能
-- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph&ssr=false#qna) コミットの一覧→詳細を閲覧できる 
+## 推奨 VScode 拡張機能
+
+- [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph&ssr=false#qna) コミットの一覧 → 詳細を閲覧できる
 - [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) ファイルの履歴などを確認できる
-- [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) 
+- [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
 ※　おすすめしたいものがあれば適宜追加する
 
 ## バージョン情報
 
-voltaで管理、volta以外をお使いの方は自身で以下のバージョンにあわせてください。
-https://volta.sh/
+<<<<<<< HEAD
+volta で管理、volta 以外をお使いの方は自身で以下のバージョンにあわせてください。
+=======
+volta で管理、volta 以外をお使いの方は自身で以下のバージョンにあわせてください。
+
+> > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
+> > > > > > > https://volta.sh/
 
 ```
 "node": "14.17.0",
@@ -42,19 +48,36 @@ https://volta.sh/
 
 ## プロジェクトの概要
 
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する
+=======
 Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する。
-チームメンバー同士でのコードレビュー、毎週MTGでのissueやデザインについての議論など個人開発では行えない内容をカバーしていきます。
+チームメンバー同士でのコードレビュー、毎週 MTG での issue やデザインについての議論など個人開発では行えない内容をカバーしていきます。
+=======
+Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する。
+チームメンバー同士でのコードレビュー、毎週 MTG での issue やデザインについての議論など個人開発では行えない内容をカバーしていきます。
+
+> > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
 
 ## 環境構築手順
 
 1. `git clone https://github.com/if-tech-support/todo_team_2.git`
 2. リポジトリのディレクトリへ移動
-3. `yarn`  // packageのinstall
-4. `yarn dev `
+   <<<<<<< HEAD
+3. # `yarn` // package の install
+4. `yarn` // package の install
+   > > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
+5. `yarn dev `
    上記を実行し、`http://localhost:3000/`
    以下の画像の画面が表示できるか確認をお願いします。
 
    ![image](https://user-images.githubusercontent.com/24813936/148723807-3b3e571b-6669-4d1c-a96f-d623f9650e09.png)
+   <<<<<<< HEAD
+
+   > > > > > > > # Stashed changes
+   > > > > > > >
+   > > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
 
 ## 開発ルール
 
@@ -66,7 +89,12 @@ Todo リストの作成を通じて、React、Next.js の基礎、git,Github の
 
 ### git/gitHub
 
-毎週MTGの際にメンバーの中で翌週のプルリクに対して、レビュワーを2人以上決めて、順番に回していく。
+<<<<<<< HEAD
+毎週 MTG の際にメンバーの中で翌週のプルリクに対して、レビュワーを 2 人以上決めて、順番に回していく。
+=======
+毎週 MTG の際にメンバーの中で翌週のプルリクに対して、レビュワーを 2 人以上決めて、順番に回していく。
+
+> > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
 
 #### ブランチ命名規則
 

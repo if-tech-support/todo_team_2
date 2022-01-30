@@ -1,21 +1,19 @@
 import { Button } from '@chakra-ui/button'
 import React from 'react'
 
-const BackButton = () => {
+export const DraftButton = () => {
   return (
     <Button
-      backgroundColor="green.300"
+      backgroundColor="pink.300"
       borderRadius="50px"
       border="1px solid"
       borderColor="rgba(0, 0, 0, 0.8)"
       w="112px"
       h="40px"
       variant="solid"
-      _hover={{ backgroundColor: 'green.400' }}
+      _hover={{ backgroundColor: 'pink.400' }}
     >
-      Back
+      DRAFT
     </Button>
   )
 }
-
-export default BackButton
