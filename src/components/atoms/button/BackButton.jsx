@@ -1,7 +1,6 @@
-import { Button } from '@chakra-ui/button'
-import React from 'react'
+import { Button } from "@chakra-ui/react"
 
-const BackButton = () => {
+export default function BackButton() {
   return (
     <Button
       backgroundColor="green.300"
@@ -17,5 +16,3 @@ const BackButton = () => {
     </Button>
   )
 }
-
-export default BackButton
