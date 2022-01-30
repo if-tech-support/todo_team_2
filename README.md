@@ -33,14 +33,7 @@
 
 ## バージョン情報
 
-<<<<<<< HEAD
 volta で管理、volta 以外をお使いの方は自身で以下のバージョンにあわせてください。
-=======
-volta で管理、volta 以外をお使いの方は自身で以下のバージョンにあわせてください。
-
-> > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
-> > > > > > > https://volta.sh/
-
 ```
 "node": "14.17.0",
 "yarn": "1.22.11",
@@ -48,36 +41,19 @@ volta で管理、volta 以外をお使いの方は自身で以下のバージ�
 
 ## プロジェクトの概要
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する
-=======
-Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する。
 チームメンバー同士でのコードレビュー、毎週 MTG での issue やデザインについての議論など個人開発では行えない内容をカバーしていきます。
-=======
-Todo リストの作成を通じて、React、Next.js の基礎、git,Github の使い方に慣れ、チーム開発を体験する。
-チームメンバー同士でのコードレビュー、毎週 MTG での issue やデザインについての議論など個人開発では行えない内容をカバーしていきます。
-
-> > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
 
 ## 環境構築手順
 
 1. `git clone https://github.com/if-tech-support/todo_team_2.git`
 2. リポジトリのディレクトリへ移動
-   <<<<<<< HEAD
-3. # `yarn` // package の install
-4. `yarn` // package の install
-   > > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
-5. `yarn dev `
+3. `yarn` // package の install
+4. `yarn dev `
    上記を実行し、`http://localhost:3000/`
    以下の画像の画面が表示できるか確認をお願いします。
 
    ![image](https://user-images.githubusercontent.com/24813936/148723807-3b3e571b-6669-4d1c-a96f-d623f9650e09.png)
-   <<<<<<< HEAD
-
-   > > > > > > > # Stashed changes
-   > > > > > > >
-   > > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
 
 ## 開発ルール
 
@@ -88,6 +64,7 @@ Todo リストの作成を通じて、React、Next.js の基礎、git,Github の
 基本的にはチームとして行いたいものを自由にやってもらうスタンスで進めていきます。
 
 ### git/gitHub
+
 毎週 MTG の際にメンバーの中で翌週のプルリクに対して、レビュワーを 2 人以上決めて、順番に回していく。
 
 #### ブランチ命名規則
@@ -107,12 +84,13 @@ issue#３　 Todo の作成画面の実装の場合
 `git commit -m '#3 Todo作成画面の要素を追加し、レイアウト調整' `
 
 #### 共同でのissue作業の流れ
+
 【担当者】
 ①リモートのマスター以外(main以外)のブランチを作成
 ・ git checkout -b リモートのマスター以外(main以外)のブランチ名（ローカルで作って）
 　ex) git checkout-b #68-New-page
 ・ git push -u origin リモートのマスター以外(main以外)のブランチ名（リモートに登録）
-　ex) git checkout-u origin #68-New-page
+　ex) git push -u origin #68-New-page
 
 ②①のブランチからローカルのブランチを作成
 ・git checkout -b ローカルのブランチ名 origin/①のブランチ名
@@ -141,5 +119,6 @@ issue#３　 Todo の作成画面の実装の場合
 
 ⑩レビューOKであればマスターブランチ（main）にマージする
 
-複数の担当者で作業する場合どうするか - Google スライド
+複数の担当者で共同作業 - Google スライド
+https://docs.google.com/presentation/d/1Lf0b8GrzmkGns8LFfZw6KkphHLzVeTl3H1Pj3E_plBM/edit#slide=id.p
 
