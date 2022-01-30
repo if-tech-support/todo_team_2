@@ -4,6 +4,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'next/core-web-vitals',
+    'next/babel'
   ],
   plugins: ['react'],
   env: {
