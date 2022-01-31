@@ -132,5 +132,4 @@ issue#３　 Todo の作成画面の実装の場合
 レビューOKであればマスターブランチ（main）にマージする
 
 複数の担当者で共同作業 - Google スライド
-https://docs.google.com/presentation/d/1Lf0b8GrzmkGns8LFfZw6KkphHLzVeTl3H1Pj3E_plBM/edit#slide=id.p
-
+![複数の担当者で作業する場合どうするか](https://user-images.githubusercontent.com/78947543/151792983-c108ee4a-9e39-43f6-aec2-46120e3260f5.jpg)
