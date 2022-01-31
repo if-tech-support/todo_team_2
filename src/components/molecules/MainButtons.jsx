@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Spacer, IconButton } from '@chakra-ui/react'
+import { Flex, Spacer, IconButton, Box } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 
 function MainButtons() {
