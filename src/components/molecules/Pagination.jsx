@@ -5,6 +5,8 @@ import { Paginator, Previous, Next, PageGroup } from 'chakra-paginator'
 
 const Pagination = () => {
   const pagesQuantity = 6
+
+  /* the styles for the unselected page buttons */
   const normalStyles = {
     w: 8,
     h: 8,
@@ -16,6 +18,8 @@ const Pagination = () => {
       color: '#38A169',
     },
   }
+
+  /* the styles for the unselected page buttons */
   const activeStyles = {
     w: 8,
     h: 8,
