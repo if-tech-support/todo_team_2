@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Router from 'next/router'
 
 import { Stack, Text, Box, Flex, Spacer, HStack } from '@chakra-ui/react'
-// import { BackButton } from '../src/components/atoms/button/BackButton'
+import  BackButton from '../src/components/atoms/button/BackButton'
 import { DetailTextarea } from '../src/components/atoms/input/DetailTextarea'
 import Title from '../src/components/atoms/input/Title'
 import { DraftButton } from '../src/components/atoms/button/DraftButton'
@@ -22,7 +22,7 @@ export default function NewTodo() {
 
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
-  const [priority, setPriority] = useState('High')
+  const [priority, setPriority] = useState('')
 
   // 現在のTodosの要素数を取得
   const quantity = Object.keys(todos).length
@@ -61,7 +61,7 @@ export default function NewTodo() {
               NEW TODO
             </Text>
             <Spacer />
-            {/* <BackButton /> */}
+            <BackButton />
           </Flex>
           <Title title={title} setTitle={setTitle} />
           <DetailTextarea detail={detail} setDetail={setDetail} />
