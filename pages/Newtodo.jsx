@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Router from 'next/router'
+import { useRecoilState } from 'recoil'
 
 import { Stack, Text, Box, Flex, Spacer, HStack } from '@chakra-ui/react'
-import  BackButton from '../src/components/atoms/button/BackButton'
+import BackButton from '../src/components/atoms/button/BackButton'
 import { DetailTextarea } from '../src/components/atoms/input/DetailTextarea'
 import Title from '../src/components/atoms/input/Title'
 import { DraftButton } from '../src/components/atoms/button/DraftButton'
@@ -10,30 +11,29 @@ import { CreateButton } from '../src/components/atoms/button/CreateButton'
 import RadioPriority from '../src/components/atoms/input/RadioPriority'
 import Header from '../src/components/organisms/Header/Header'
 
-import { TodoState } from '../src/hooks/TodoState'
-import { Now } from '../src/hooks/Now'
+import { todoState } from '../src/hooks/TodoState'
+import { getTime } from '../src/utils/Now'
 
 export default function NewTodo() {
   // TodoState.jsで定義したtosos,setTodosを呼び出し
-  const { todos, setTodos } = TodoState()
+  const [todos, setTodos] = useRecoilState(todoState)
 
   // Now.jsで定義したcurerntTimeを呼び出し
-  const { currentTime } = Now()
+  const { currentTime } = getTime()
 
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
   const [priority, setPriority] = useState('')
 
-  // 現在のTodosの要素数を取得
-  const quantity = Object.keys(todos).length
   // 新しいTodoのidを定義
-  const id = quantity + 1
-
-  console.log(todos)
+  const id =
+    // ミリ単位での日付を取得し文字列型に変更
+    new Date().getTime().toString() +
+    // 乱数を取得し文字列型に変更し文字列連結
+    Math.floor(Math.random() * 10).toString()
 
   // Todosに新しいTodoを追加
   const onSubmit = () => {
-    // e.preventDefault()
     const newTodos = [
       {
         id,
@@ -46,8 +46,6 @@ export default function NewTodo() {
       ...todos,
     ]
     setTodos(newTodos)
-    setTitle('')
-    setDetail('')
     Router.push('/')
   }
 
