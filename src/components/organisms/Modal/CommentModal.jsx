@@ -20,7 +20,7 @@ export default function CommentModal() {
   return (
     <div>
       <Button onClick={onOpen}>Open Modal</Button>
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+      <Modal initialFocusRef={initialRef} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader fontSize="4xl">Comment</ModalHeader>
