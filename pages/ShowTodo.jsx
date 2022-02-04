@@ -14,7 +14,7 @@ import BackButton from '../src/components/atoms/button/BackButton'
 import CommentButton from '../src/components/atoms/button/CommentButton'
 import Comment from '../src/components/atoms/comment/Comment'
 
-function index() {
+function ShowTodo() {
   return (
     <>
       <Header />
@@ -44,4 +44,4 @@ function index() {
   )
 }
 
-export default index
+export default ShowTodo
