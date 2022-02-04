@@ -1,7 +1,8 @@
-import { Button } from '@chakra-ui/button'
-import React from 'react'
+import { Button } from '@chakra-ui/react'
 
-export const CreateButton = () => {
+export const CreateButton = (props) => {
+  const { onSubmit } = props
+
   return (
     <Button
       backgroundColor="green.400"
@@ -12,6 +13,7 @@ export const CreateButton = () => {
       h="40px"
       variant="solid"
       _hover={{ backgroundColor: 'green.500' }}
+      onClick={() => onSubmit()}
     >
       CREATE
     </Button>
