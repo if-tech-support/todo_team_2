@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Flex, Text } from '@chakra-ui/react'
+import { useRecoilValue } from 'recoil'
+import { commentState } from '../../../hooks/CommentsState'
 
-export default function comment() {
+export default function Comment() {
+  const currentComments = useRecoilValue(commentState)
+  console.log(currentComments)
   return (
     <>
+    {currentComments.map((comment) => (
       <Box
         borderRadius="8px"
         border="1px"
         borderColor="Black"
         w="400px"
         h="100px"
+        key={comment.id}
       >
         <Flex
           bg="green"
@@ -21,13 +27,14 @@ export default function comment() {
           align="center"
           justifyContent="space-between"
         >
-          <Text>name</Text>
-          <Text>date</Text>
+          <Text>{comment.name}</Text>
+          <Text>{comment.createdAt}</Text>
         </Flex>
         <Box pr={4} pl={4}>
-          <Text>text</Text>
+          <Text>{comment.comment}</Text>
         </Box>
       </Box>
+    ))}
     </>
   )
 }
