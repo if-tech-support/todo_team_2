@@ -1,8 +1,8 @@
 import React, { useState }from 'react'
 import { useRecoilState } from 'recoil'
-import { commentState, dateState } from '../../../hooks/CommentsState'
+import { commentState, dateState } from '../../../hooks/CommentState'
 import { getTime } from '../../../utils/Now'
-import CommentButton from '../../components/atoms/button/CommentButton.jsx'
+import CommentButton from '../../atoms/button/CommentButton'
 
 import {
   Button,
@@ -20,31 +20,43 @@ import {
 } from '@chakra-ui/react'
 
 export default function CommentModal() {
-
+  // 名前とコメントをuseStateで設定
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
+  // CommentState.jsで定義したcommentStateを呼び出し
   const [comments, setComments] = useRecoilState(commentState)
 
+  // Now.jsで定義したcurrentTimeを呼び出し
   const { currentTime } = getTime()
+  // CommentState.jsで定義したdateStateを呼び出し
   const [times, setTimes] = useRecoilState(dateState)
+  // コメント投稿の識別用にidを設定
   const [id, setId] = useState(0)
 
+  // CREATEボタンを押したときの挙動
   const onAddComment = () => {
+    // timesにcurrentTime(コメント作成日)を追加する
     setTimes([
       ...times,
       currentTime,
     ])
+    // commentsにid,name,comment,createdAtを持つオブジェクト（作成したコメント情報）を追加
     setComments(
       [
         ...comments,
-        { id: times.length + 1, name: name, comment: comment, createdAt: currentTime},
+        {
+          id: times.length + 1,
+          name: name,
+          comment: comment,
+          createdAt: currentTime,
+        },
       ]
     )
+    // モーダルを閉じるためにisOpenをfalseにする
     onClose()
+    // モーダルに入力した値を初期化
     setName("")
     setComment("")
-    // setComments([])
-    // setTimes([])
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -52,20 +64,8 @@ export default function CommentModal() {
 
   return (
     <>
-      <Button
-      backgroundColor="green.600"
-      borderRadius="50px"
-      border="1px solid"
-      borderColor="rgba(0, 0, 0, 0.8)"
-      color="white"
-      w="112px"
-      h="40px"
-      variant="solid"
-      _hover={{ backgroundColor: 'green.400' }}
-      onClick={onOpen}
-    >
-      Comment
-    </Button>
+      {/* CommentButton.jsxからインポート */}
+      <CommentButton onClick={onOpen}/>
       <Modal initialFocusRef={initialRef} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>

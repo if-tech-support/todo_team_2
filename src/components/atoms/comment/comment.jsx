@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { useRecoilValue } from 'recoil'
-import { commentState } from '../../../hooks/CommentsState'
+import { commentState } from '../../../hooks/CommentState'
 
 export default function Comment() {
+  // コメント一覧を取得
   const currentComments = useRecoilValue(commentState)
-  console.log(currentComments)
+  // コメント一覧を表示する
   return (
     <>
     {currentComments.map((comment) => (
