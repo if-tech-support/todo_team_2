@@ -15,6 +15,7 @@ export default function EditTodo() {
       <Header />
       <Box px="100px" pt={4}>
         <Flex justifyContent="space-between" alignItems="center" pb={5}>
+
           <Headline title="EDIT TODO" />
           <BackButton />
         </Flex>
@@ -22,6 +23,7 @@ export default function EditTodo() {
         <DetailTextarea />
         <Flex justifyContent="space-between" pt={5} alignItems="center">
           <Flex justifyContent="space-between" w="368px">
+
             <CreationTime />
             <UpdateTime />
           </Flex>
