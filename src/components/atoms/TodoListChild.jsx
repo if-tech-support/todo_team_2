@@ -23,7 +23,11 @@ const TodoListChild = () => {
             onClick={() => {
               router.push({
                 pathname: 'ShowTodo',
-                query: { title: todo.title, detail: todo.detail },
+                query: {
+                  title: todo.title,
+                  detail: todo.detail,
+                  created_day: todo.created_day,
+                },
               })
             }}
           >

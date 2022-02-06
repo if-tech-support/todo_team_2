@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import EditButton from '../../atoms/button/EditButton'
 
-export default function DetailCard({ title, detail }) {
+export default function DetailCard({ title, detail, created_day }) {
   return (
     <VStack
       p={3}
@@ -51,7 +51,7 @@ export default function DetailCard({ title, detail }) {
           <Spacer />
           <Stat whiteSpace="nowrap">
             <StatLabel fontSize="sm">Created at</StatLabel>
-            <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
+            <StatNumber fontSize="md">{created_day}</StatNumber>
           </Stat>
         </Flex>
       </Flex>

@@ -38,7 +38,11 @@ function index() {
         </Flex>
         <HStack spacing={1}>
           {/* トップから渡ってきたquery情報をDerailCardに渡す */}
-          <DetailCard title={router.query.title} detail={router.query.detail} />
+          <DetailCard
+            title={router.query.title}
+            detail={router.query.detail}
+            created_day={router.query.created_day}
+          />
           <VStack pb="5" h="480" w="xl">
             <Comment />
           </VStack>
