@@ -1,6 +1,9 @@
-import { Button } from "@chakra-ui/react"
+import { Button } from '@chakra-ui/button'
+import React from 'react'
+import { Icon } from '@chakra-ui/react'
+import { BiPencil } from 'react-icons/bi'
 
-export default function BackButton() {
+const EditButton = () => {
   return (
     <Button
       backgroundColor="green.300"
@@ -11,8 +14,11 @@ export default function BackButton() {
       h="40px"
       variant="solid"
       _hover={{ backgroundColor: 'green.400' }}
+      rightIcon={<Icon as={BiPencil} />}
     >
-      Back
+      Edit
     </Button>
   )
 }
+
+export default EditButton
