@@ -35,7 +35,7 @@ function index() {
         <HStack spacing={1}>
           <DetailCard />
           <VStack pb="5" h="480" w="xl">
-          <Comment/>
+            <Comment />
           </VStack>
         </HStack>
         {/* ここにページネーションが入ります */}

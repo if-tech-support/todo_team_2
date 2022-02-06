@@ -9,6 +9,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
+import { useRecoilState } from 'recoil'
 import EditButton from '../../atoms/button/EditButton'
 
 export default function DetailCard() {
@@ -44,12 +45,12 @@ export default function DetailCard() {
             <EditButton />
           </Box>
           ‌ <Spacer />
-          <Stat>
+          <Stat whiteSpace="nowrap">
             <StatLabel fontSize="sm">Updated at</StatLabel>
             <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
           </Stat>
           <Spacer />
-          <Stat>
+          <Stat whiteSpace="nowrap">
             <StatLabel fontSize="sm">Created at</StatLabel>
             <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
           </Stat>
