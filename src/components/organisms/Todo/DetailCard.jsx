@@ -9,10 +9,9 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-import { useRecoilState } from 'recoil'
 import EditButton from '../../atoms/button/EditButton'
 
-export default function DetailCard() {
+export default function DetailCard({ title, detail }) {
   return (
     <VStack
       p={3}
@@ -28,14 +27,14 @@ export default function DetailCard() {
         <Heading as="h2" size="md" bg="green.300" px={3} my={1}>
           Title
         </Heading>
-        <Text fontSize="lg">Text</Text>
+        <Text fontSize="lg">{title}</Text>
       </Box>
       <Box w="full" h="full" minHeight={0}>
         <Heading as="h2" size="md" bg="green.300" px={3} my={1}>
           Detail
         </Heading>
         <Box h="100%" overflow="scroll">
-          <Text fontSize="lg">Text</Text>
+          <Text fontSize="lg">{detail}</Text>
         </Box>
       </Box>
       <Spacer />

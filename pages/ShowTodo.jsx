@@ -8,6 +8,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
@@ -15,6 +16,9 @@ import CommentButton from '../src/components/atoms/button/CommentButton'
 import Comment from '../src/components/atoms/comment/Comment'
 
 function index() {
+  //Routerを定義
+  const router = useRouter()
+
   return (
     <>
       <Header />
@@ -33,7 +37,8 @@ function index() {
           </Flex>
         </Flex>
         <HStack spacing={1}>
-          <DetailCard />
+          {/* トップから渡ってきたquery情報をDerailCardに渡す */}
+          <DetailCard title={router.query.title} detail={router.query.detail} />
           <VStack pb="5" h="480" w="xl">
             <Comment />
           </VStack>
