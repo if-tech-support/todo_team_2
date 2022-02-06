@@ -19,6 +19,7 @@ const TodoListChild = () => {
           <Td
             fontSize="16px"
             fontWeight="bold"
+            cursor="pointer"
             // ShowTodoへ遷移 & todoの中身を遷移先に渡す
             onClick={() => {
               router.push({

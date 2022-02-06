@@ -10,8 +10,11 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import EditButton from '../../atoms/button/EditButton'
+import { useRouter } from 'next/router'
 
 export default function DetailCard({ title, detail, created_day }) {
+  const router = useRouter()
+
   return (
     <VStack
       p={3}
@@ -40,7 +43,7 @@ export default function DetailCard({ title, detail, created_day }) {
       <Spacer />
       <Flex pt={3} w="full">
         <Flex justifyContent="flex-end" w="full" p={4}>
-          <Box>
+          <Box onClick={() => router.push('/EditTodo')}>
             <EditButton />
           </Box>
           ‌ <Spacer />
