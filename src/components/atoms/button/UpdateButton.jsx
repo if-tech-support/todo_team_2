@@ -14,7 +14,7 @@ export const UpdateButton = (props) => {
   const [todos, setTodos] = useRecoilState(todoState)
 
   // updateボタンを押下後、title,detail,update_timeを更新する。
-  const handleUpdateDate = () => {
+  const handleClickUpdate = () => {
     // 現在時刻を取得
     const { currentTime } = getTime()
 
@@ -34,13 +34,15 @@ export const UpdateButton = (props) => {
     })
     // 編集した内容を、todosに更新。
     setTodos(upTodos)
+    // editTodoを初期化
+    setEditTodo({})
 
     Router.push('/')
   }
 
   return (
     <Button
-      onClick={handleUpdateDate}
+      onClick={handleClickUpdate}
       backgroundColor="green.600"
       borderRadius="50px"
       border="1px solid"
