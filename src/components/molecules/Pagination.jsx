@@ -1,10 +1,35 @@
-import { ChakraProvider, HStack } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+import { HStack } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import {
+  Paginator,
+  Previous,
+  Next,
+  PageGroup,
+  generatePages,
+} from 'chakra-paginator'
+import { todoState } from '../../hooks/TodoState'
 
-import { Paginator, Previous, Next, PageGroup } from 'chakra-paginator'
+const Pagination = (props) => {
+  // TodoState.jsで定義したtodos,setTodosを呼び出し
+  const todos = useRecoilValue(todoState)
 
-const Pagination = () => {
-  const pagesQuantity = 6
+  // 親コンポーネントから以下をpropsとして受け取る
+  const { setCurPage, itemLimit, pagesQuantity, setPagesQuantity } = props
+
+  // ページネーターでページが選択される度にstate:curPageが更新される
+  const handlePageChange = (page) => {
+    setCurPage(page)
+  }
+
+  // todosの要素数が変化するたびに、ページネーターのページ総数を変更
+  useEffect(() => {
+    // ページネーターのページ総数は、todoリストのオブジェクト数と1ページあたりの表示数から算出
+    const pagesTotal = Math.ceil(todos.length / itemLimit)
+    // 上で算出したページ総数をpagesQuantityに格納する
+    setPagesQuantity(pagesTotal)
+  }, [todos.length, itemLimit])
 
   /* 通常　buttonスタイル  */
   const normalStyles = {
@@ -34,12 +59,17 @@ const Pagination = () => {
       activeStyles={activeStyles}
       normalStyles={normalStyles}
       pagesQuantity={pagesQuantity}
+      onPageChange={handlePageChange}
     >
       <HStack spacing="20px" p={4}>
         <Previous w={8} h={8} bg="White" border="1px solid Black">
           <ChevronLeftIcon color="gray.400" w={5} h={5} />
         </Previous>
-        <PageGroup isInline align="center" spacing="10px" />
+        <PageGroup isInline align="center" spacing="10px">
+          {generatePages(pagesQuantity)?.map((page) => (
+            <Page key={`paginator_page_${page}`} page={page} />
+          ))}
+        </PageGroup>
         <Next w={8} h={8} bg="White" border="1px solid Black">
           <ChevronRightIcon color="gray.400" w={5} h={5} />
         </Next>
