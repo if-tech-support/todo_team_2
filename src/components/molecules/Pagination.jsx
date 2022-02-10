@@ -29,7 +29,7 @@ const Pagination = (props) => {
     const pagesTotal = Math.ceil(todos.length / itemLimit)
     // 上で算出したページ総数をpagesQuantityに格納する
     setPagesQuantity(pagesTotal)
-  }, [todos.length, itemLimit])
+  }, [todos.length])
 
   /* 通常　buttonスタイル  */
   const normalStyles = {
