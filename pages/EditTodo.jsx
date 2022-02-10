@@ -20,8 +20,8 @@ export default function EditTodo() {
 
   // EditTodo画面のロード時に、編集したいtodoの情報をローカルなstateに保持させる
   useEffect(() => {
-    setTitle(() => editTodo.title)
-    setDetail(() => editTodo.detail)
+    setTitle(editTodo.title)
+    setDetail(editTodo.detail)
   }, [])
 
   return (
