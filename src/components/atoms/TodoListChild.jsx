@@ -24,8 +24,6 @@ const TodoListChild = (props) => {
     })
     setTodos(newTodos);
   }
-  console.log(todos);
-
   return (
     <Tr key={id}>
       <Td fontSize="16px" fontWeight="bold">

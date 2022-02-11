@@ -7,7 +7,6 @@ import { todoState } from '../../../hooks/TodoState';
 
 export default function TodosTable() {
   const [todos, setTodos] = useRecoilState(todoState);
-  console.log(typeof(todos));
   return (
     <Table size="md">
       <Thead bg="green.300">
@@ -24,7 +23,6 @@ export default function TodosTable() {
         {todos.map((todo, index) => {
           if(todo.position == 'active'){
             return(
-  
             <TodoListChild 
             key={index}
             id={todo.id}
