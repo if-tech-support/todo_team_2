@@ -3,12 +3,13 @@ import { Tbody, Tr, Td, Button, Select } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
-import { todoStatus } from '../atoms/status/todoStatus'
-import { todoPriority } from '../atoms/status/todoPriority'
 
 const TodoListChild = () => {
-  // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
+  console.log(todos)
+
+  const handleTodoStatus = () => {}
+
   return (
     <Tbody>
       {todos.map((todo) => (
@@ -17,18 +18,24 @@ const TodoListChild = () => {
             {todo.title}
           </Td>
           <Td>
-            <todoStatus />
-            {/* <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
+            <Button
+              rounded="full"
+              bg="green.50"
+              size="lg"
+              fontSize="12px"
+              onClick={() => {
+                handleTodoStatus(todo.status)
+              }}
+            >
               {todo.status}
-            </Button> */}
+            </Button>
           </Td>
           <Td>
-            <todoPriority />
-            {/* <Select borderColor="tomato" fontSize="16px">
+            <Select borderColor="tomato" fontSize="16px">
               <option>High</option>
               <option>Middle</option>
               <option>Low</option>
-            </Select> */}
+            </Select>
           </Td>
           <Td fontSize="14px">{todo.created_day}</Td>
           <Td fontSize="14px">2020-11-8 18:55</Td>
