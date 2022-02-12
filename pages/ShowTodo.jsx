@@ -5,14 +5,12 @@ import {
   Heading,
   HStack,
   Spacer,
-  Text,
-  VStack,
 } from '@chakra-ui/react'
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
-import Comment from '../src/components/atoms/comment/Comment'
-import CommentModal from '../src/components/organisms/Modal/CommentModal'
+import { Comment } from '../src/components/atoms/comment/Comment'
+import { CommentModal } from '../src/components/organisms/Modal/CommentModal'
 
 function ShowTodo() {
   return (
@@ -34,9 +32,9 @@ function ShowTodo() {
         </Flex>
         <HStack spacing={1}>
           <DetailCard />
-          <VStack pb="5" h="480" w="xl">
+          {/* <Stack pb="5" h="480" w="xl"> */}
           <Comment/>
-          </VStack>
+          {/* </Stack> */}
         </HStack>
         {/* ここにページネーションが入ります */}
       </Container>

@@ -19,7 +19,9 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 
-export default function CommentModal() {
+
+
+export const CommentModal = () => {
   // 名前とコメントをuseStateで設定
   const [name, setName] = useState("")
   const [comment, setComment] = useState("")
@@ -30,8 +32,6 @@ export default function CommentModal() {
   const { currentTime } = getTime()
   // CommentState.jsで定義したdateStateを呼び出し
   const [times, setTimes] = useRecoilState(dateState)
-  // コメント投稿の識別用にidを設定
-  const [id, setId] = useState(0)
 
   // CREATEボタンを押したときの挙動
   const onAddComment = () => {
@@ -39,21 +39,30 @@ export default function CommentModal() {
     setTimes([
       ...times,
       currentTime,
-    ])
+    ]);
+    // 入力された値が空のときにアラートを表示する
+    if (!name && comment) {
+      alert("名前が空です")
+    } else if (!comment && name) {
+      alert("コメントが空です")
+    } else if (!name && !comment) {
+      alert("名前とコメントが空です")
+    } else {
     // commentsにid,name,comment,createdAtを持つオブジェクト（作成したコメント情報）を追加
-    setComments(
-      [
-        ...comments,
-        {
-          id: times.length + 1,
-          name: name,
-          comment: comment,
-          createdAt: currentTime,
-        },
-      ]
-    )
-    // モーダルを閉じるためにisOpenをfalseにする
-    onClose()
+      setComments(
+        [
+          ...comments,
+          {
+            id: times.length + 1,
+            name: name,
+            comment: comment,
+            createdAt: currentTime,
+          },
+        ]
+      )
+      // モーダルを閉じるためにisOpenをfalseにする
+      onClose()
+    };
     // モーダルに入力した値を初期化
     setName("")
     setComment("")
