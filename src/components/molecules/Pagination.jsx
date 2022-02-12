@@ -17,12 +17,15 @@ const Pagination = (props) => {
   const todos = useRecoilValue(todoState)
 
   // 親コンポーネントから以下をpropsとして受け取る
-  const { setCurPage, itemLimit, pagesQuantity, setPagesQuantity } = props
+  const { setCurPage, itemLimit, pagesQuantity, setPagesQuantity, curPage } =
+    props
 
   // ページネーターでページが選択される度にstate:curPageが更新される
   const handlePageChange = (page) => {
     setCurPage(page)
   }
+
+  console.log(curPage)
 
   // todosの要素数が変化するたびに、ページネーターのページ総数を変更
   useEffect(() => {

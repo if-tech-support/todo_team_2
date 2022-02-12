@@ -23,7 +23,7 @@ const TodoListChild = ({ curPage, itemLimit }) => {
     return (
       <Tbody>
         {curItems.map(function (data) {
-          console.log(data)
+          // curItemsからプロパティを取得
           const { id, status, title, created_day } = data
           return (
             <Tr key={id}>

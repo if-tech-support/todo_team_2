@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { Box, Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
 import MainButtons from '../src/components/molecules/MainButtons'
 import Header from '../src/components/organisms/Header/Header'
@@ -13,7 +13,7 @@ import { todoState } from '../src/hooks/TodoState'
 
 export default function Home() {
   // todosの読み込み機能だけ利用
-  const todos = useRecoilState(todoState)
+  const todos = useRecoilValue(todoState)
 
   // 1ページに表示するtodoItemの数を設定
   const itemLimit = 5;
@@ -54,6 +54,7 @@ export default function Home() {
           <Pagination
             itemLimit={itemLimit}
             setCurPage={setCurPage}
+            curPage={curPage}
             pagesQuantity={pagesQuantity}
             setPagesQuantity={setPagesQuantity}
           />
