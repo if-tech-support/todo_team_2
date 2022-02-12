@@ -1,56 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Tbody, Tr, Td, Button, Select } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
 
 const TodoListChild = () => {
+  // TodoState.jsで定義したtosos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
-  // const [status, setStatus] = useState(0)
-  console.log('recoil=', todos)
 
-  // console.log('@@@ans=', ans)
-  // const statuses = ['NOT STARTED', 'DOING', 'DONE']
+  // ステータスボタンをクリックしたら、Statusが変わります
   const handleTodoStatus = (index) => {
-    console.log('index=', index)
-
-    console.log('todos=', todos[index])
-
-    const switchTodoStatus = [...todos]
+    const switchTodoStatus = JSON.parse(JSON.stringify(todos))
     if (switchTodoStatus[index].status === 'NOT STARTED') {
-      switchTodoStatus[index].status === 'DOING'
+      switchTodoStatus[index].status = 'DOING'
     } else if (switchTodoStatus[index].status === 'DOING') {
-      switchTodoStatus[index].status === 'DONE'
+      switchTodoStatus[index].status = 'DONE'
     } else if (switchTodoStatus[index].status === 'DONE') {
-      switchTodoStatus[index].status === 'NOT STARTED'
+      switchTodoStatus[index].status = 'NOT STARTED'
     }
+
     setTodos(switchTodoStatus)
-
-    // let ans = 0
-    // ans = status + 1
-    // if (ans > 2) {
-    //   ans = 0
-    // }
-    // setStatus(ans)
-
-    // console.log(ans)
-    // console.log('statuses=', statuses[ans])
-    // const changeStatus = statuses[ans]
-    // console.log(changeStatus)
-    // setStatus(changeStatus)
-
-    // ans = ans + 1
-    // if (ans > 2) {
-    //   ans = 0
-    // }
-    // setTodos.status
   }
 
-  // console.log('@@@status=', status)
-
-  // useEffect(() => {
-  //   setStatus(statuses[ans])
-  // }, [statuses[ans]])
+  // ステータスによってボタンの背景色が変更
+  const bgColor = (status) => {
+    if (status === 'NOT STARTED') {
+      return 'green.50'
+    } else if (status === 'DOING') {
+      return 'green.600'
+    } else if (status === 'DONE') {
+      return 'green.300'
+    }
+  }
+  // ステータスによってボタンのテキスト色が変更
+  const textColor = (status) => {
+    if (status === 'NOT STARTED') {
+      return 'black'
+    } else if (status === 'DOING') {
+      return 'white'
+    } else if (status === 'DONE') {
+      return 'black'
+    }
+  }
 
   return (
     <Tbody>
@@ -62,15 +53,14 @@ const TodoListChild = () => {
           <Td>
             <Button
               rounded="full"
-              bg="green.50"
+              bg={bgColor(todo.status)}
+              color={textColor(todo.status)}
               size="lg"
               fontSize="12px"
-              onClick={() => {
-                handleTodoStatus(index)
-              }}
+              _hover={{ opacity: 0.8 }}
+              onClick={() => handleTodoStatus(index)}
             >
               {todo.status}
-              {/* {statuses[status]} */}
             </Button>
           </Td>
           <Td>
