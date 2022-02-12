@@ -5,16 +5,17 @@ import { useRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
 
 const TodoListChild = (props) => {
-  const {id, status, createdAt, title} = props;
-
+  // TodoTableより引き渡されたpropsを展開
+  const {id, status, created_day,updated_day, title} = props;
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
   
   // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
+  // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
-    // todos内で押下されたTodoのidが同じものを抽出し、statusを更新
-    // idを元にtodosのオブジェクトを取得
+    // todos内で押下されたTodoのidが同じものを抽出し定数に代入
+    // 引数：処理、戻り値：処理結果
     const newTodos = todos.map((todo) => {
       if (todo.id === todoId) {
         // statusをnot_activeに変更
@@ -22,6 +23,7 @@ const TodoListChild = (props) => {
       }
       return todo;
     })
+    // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
     setTodos(newTodos);
   }
   return (
@@ -36,15 +38,16 @@ const TodoListChild = (props) => {
       </Td>
       <Td>
         <Select borderColor="tomato" fontSize="16px">
-          <option>High</option>
-          <option>Middle</option>
-          <option>Low</option>
+          <option value="High">High</option>
+          <option value="Middle">Middle</option>
+          <option value="Low">Low</option>
         </Select>
       </Td>
-      <Td fontSize="14px">{createdAt}</Td>
-      <Td fontSize="14px">2020-11-8 18:55</Td>
+      <Td fontSize="14px">{created_day}</Td>
+      <Td fontSize="14px">{updated_day}</Td>
       <Td>
         <EditIcon w={18} h={18} me={5} />
+        {/* Todoをゴミ箱に移動するメソッドを呼び出し */}
         <DeleteIcon w={18} h={18} cursor={"pointer"} onClick={() => onClickTrash(id)}/>
       </Td>
     </Tr>

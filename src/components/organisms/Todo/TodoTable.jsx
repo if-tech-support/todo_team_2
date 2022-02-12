@@ -1,12 +1,13 @@
 import { Table, Tbody, Thead, Th, Tr, Td } from '@chakra-ui/react'
 import TodoListChild from '../../atoms/TodoListChild'
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { todoState } from '../../../hooks/TodoState';
 
 
 
 export default function TodosTable() {
-  const [todos, setTodos] = useRecoilState(todoState);
+  // todosに格納されている値のみを参照
+  const todos = useRecoilValue(todoState);
   return (
     <Table size="md">
       <Thead bg="green.300">
@@ -20,14 +21,18 @@ export default function TodosTable() {
         </Tr>
       </Thead>
       <Tbody>
-        {todos.map((todo, index) => {
+        {
+          // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
+          todos.map((todo, index) => {
+          // todosの要素内にあるpositionがactiveなものだけを呼び出し表示
           if(todo.position == 'active'){
             return(
             <TodoListChild 
             key={index}
             id={todo.id}
             status={todo.status}
-            created_day={todo.createdAt}
+            created_day={todo.created_day}
+            updated_day={todo.updated_day}
             title={todo.title}
             />
             )
