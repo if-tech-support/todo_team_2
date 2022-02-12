@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Spacer, Text } from '@chakra-ui/react'
 import { useRecoilValue } from 'recoil'
 import { commentState } from '../../../hooks/CommentState'
 
@@ -10,18 +10,20 @@ export const  Comment = () => {
   return (
     <>
     {/* overfllow="auto"ではみ出た部分をスクロールで表示 */}
-    <Box h={480} overflow="auto">
+    <Box h={480} pt="20px" overflow="auto">
     {/* currentCommentsが空の時とそうでない時で条件分岐して一覧表示 */}
     {currentComments ?
     (currentComments.map((comment) => (
-    <Box
+    // 余白(mbで指定)を挿入するためにFlexに変更し、flexFlowとmbを追加
+    <Flex
     borderRadius="8px"
     border="1px"
     borderColor="Black"
     w="400px"
     h="100px"
-    marginBottom={1}
     key={comment.id}
+    flexFrow="column"
+    mb="20px"
     >
       <Flex
         bg="green"
@@ -39,7 +41,7 @@ export const  Comment = () => {
       <Box pr={4} pl={4}>
         <Text>{comment.comment}</Text>
       </Box>
-    </Box>
+    </Flex>
     )))
     :
     <Box></Box>
