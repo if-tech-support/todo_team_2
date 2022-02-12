@@ -6,6 +6,7 @@ import {
   Paginator,
   Previous,
   Next,
+  Page,
   PageGroup,
   generatePages,
 } from 'chakra-paginator'

@@ -1,5 +1,5 @@
-import React,{useState} from "react"
-import { useRecoilValue } from 'recoil'
+import React, { useState, useEffect } from "react"
+import { useRecoilState } from 'recoil'
 import { Box, Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
 import MainButtons from '../src/components/molecules/MainButtons'
 import Header from '../src/components/organisms/Header/Header'
@@ -13,7 +13,7 @@ import { todoState } from '../src/hooks/TodoState'
 
 export default function Home() {
   // todosの読み込み機能だけ利用
-  const todos = useRecoilValue(todoState)
+  const todos = useRecoilState(todoState)
 
   // 1ページに表示するtodoItemの数を設定
   const itemLimit = 5;
@@ -21,8 +21,8 @@ export default function Home() {
   // pagenationのページ数を監視するstateを定義
   const [pagesQuantity, setPagesQuantity] = useState(0);
 
-   // 現在表示中のページを監視するstateを定義
-   const [curPage, setCurPage] = useState(1);
+  // 現在表示中のページを監視するstateを定義
+  const [curPage, setCurPage] = useState(0);
 
   return (
     <>
@@ -49,18 +49,16 @@ export default function Home() {
             <MainButtons />
           </Box>
         </Flex>
-        <TodoTable />
-        {/* todosが0～表示限度数の間、ページネーターは非表示 */}
-        {todos.length > itemLimit && 
-          <Flex justifyContent="center">
-            <Pagination
-              itemLimit={itemLimit}
-              setCurPage={setCurPage}
-              pagesQuantity={pagesQuantity}
-              setPagesQuantity={setPagesQuantity}
-            />
-          </Flex>
-        }
+        <TodoTable curPage={curPage} itemLimit={itemLimit} />
+        <Flex justifyContent="center">
+          <Pagination
+            itemLimit={itemLimit}
+            setCurPage={setCurPage}
+            pagesQuantity={pagesQuantity}
+            setPagesQuantity={setPagesQuantity}
+          />
+        </Flex>
+
       </Container>
     </>
   )
