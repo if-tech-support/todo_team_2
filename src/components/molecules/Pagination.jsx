@@ -22,9 +22,8 @@ const Pagination = (props) => {
 
   // ページネーターでページが選択される度にstate:curPageが更新される
   const handlePageChange = (page) => {
-    setCurPage(page)
+    setCurPage(page - 1)
   }
-
   console.log(curPage)
 
   // todosの要素数が変化するたびに、ページネーターのページ総数を変更
