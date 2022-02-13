@@ -16,41 +16,36 @@ const TodoListChild = ({ curPage, itemLimit }) => {
     const offset = curPage * itemLimit
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
-  {
-    return (
-      <Tbody>
-        {curItems.map(function (data) {
-          // curItemsからプロパティを取得
-          const { id, status, title, created_day } = data
-          return (
-            <Tr key={id}>
-              <Td fontSize="16px" fontWeight="bold">
-                {title}
-              </Td>
-              <Td>
-                <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
-                  {status}
-                </Button>
-              </Td>
-              <Td>
-                <Select borderColor="tomato" fontSize="16px">
-                  <option>High</option>
-                  <option>Middle</option>
-                  <option>Low</option>
-                </Select>
-              </Td>
-              <Td fontSize="14px">{created_day}</Td>
-              <Td fontSize="14px">2020-11-8 18:55</Td>
-              <Td>
-                <EditIcon w={18} h={18} me={5} />
-                <DeleteIcon w={18} h={18} />
-              </Td>
-            </Tr>
-          )
-        })}
-      </Tbody>
-    )
-  }
+
+  return (
+    <Tbody>
+      {curItems.map((curItem) => (
+        <Tr key={curItem.id}>
+          <Td fontSize="16px" fontWeight="bold">
+            {curItem.title}
+          </Td>
+          <Td>
+            <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
+              {curItem.status}
+            </Button>
+          </Td>
+          <Td>
+            <Select borderColor="tomato" fontSize="16px">
+              <option>High</option>
+              <option>Middle</option>
+              <option>Low</option>
+            </Select>
+          </Td>
+          <Td fontSize="14px">{curItem.created_day}</Td>
+          <Td fontSize="14px">2020-11-8 18:55</Td>
+          <Td>
+            <EditIcon w={18} h={18} me={5} />
+            <DeleteIcon w={18} h={18} />
+          </Td>
+        </Tr>
+      ))}
+    </Tbody>
+  )
 }
 
 export default TodoListChild
