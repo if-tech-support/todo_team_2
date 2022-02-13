@@ -4,7 +4,6 @@ import { useRecoilState } from 'recoil'
 
 import { Stack, Text, Box, Flex, Spacer, HStack } from '@chakra-ui/react'
 import BackButton from '../src/components/atoms/button/BackButton'
-// import { DetailTextarea } from '../src/components/atoms/input/DetailTextarea'
 import Markdown from '../src/components/molecules/Markdown'
 import Title from '../src/components/atoms/input/Title'
 import { DraftButton } from '../src/components/atoms/button/DraftButton'
@@ -63,8 +62,6 @@ export default function NewTodo() {
             <BackButton />
           </Flex>
           <Title title={title} setTitle={setTitle} />
-          {/* <DetailTextarea detail={detail} setDetail={setDetail} />
-           */}
           <Markdown detail={detail} setDetail={setDetail} />
           <RadioPriority setPriority={setPriority} />
 
