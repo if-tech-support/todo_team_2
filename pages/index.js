@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react"
-import { useRecoilValue } from 'recoil'
+import React, { useState } from "react"
 import { Box, Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
 import MainButtons from '../src/components/molecules/MainButtons'
 import Header from '../src/components/organisms/Header/Header'
