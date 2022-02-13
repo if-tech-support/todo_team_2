@@ -8,18 +8,12 @@ import SearchStatus from '../src/components/atoms/search/SearchStatus'
 import { SearchPriority } from '../src/components/atoms/search/SearchPriority'
 import TodoTable from '../src/components/organisms/Todo/TodoTable'
 import { ResetButton } from '../src/components/atoms/button/ResetButton'
-import Pagination from "../src/components/molecules/Pagination";
-import { todoState } from '../src/hooks/TodoState'
+import PageRouting from "../src/components/molecules/PageRouting";
 
 export default function Home() {
-  // todosの読み込み機能だけ利用
-  const todos = useRecoilValue(todoState)
 
   // 1ページに表示するtodoItemの数を設定
   const itemLimit = 5;
-
-  // pagenationのページ数を監視するstateを定義
-  const [pagesQuantity, setPagesQuantity] = useState(0);
 
   // 現在表示中のページを監視するstateを定義
   const [curPage, setCurPage] = useState(0);
@@ -51,12 +45,10 @@ export default function Home() {
         </Flex>
         <TodoTable curPage={curPage} itemLimit={itemLimit} />
         <Flex justifyContent="center">
-          <Pagination
+          <PageRouting
             itemLimit={itemLimit}
             setCurPage={setCurPage}
             curPage={curPage}
-            pagesQuantity={pagesQuantity}
-            setPagesQuantity={setPagesQuantity}
           />
         </Flex>
 

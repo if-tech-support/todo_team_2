@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { HStack } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
@@ -12,19 +12,20 @@ import {
 } from 'chakra-paginator'
 import { todoState } from '../../hooks/TodoState'
 
-const Pagination = (props) => {
+const PageRouting = (props) => {
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const todos = useRecoilValue(todoState)
 
+  // pagenationのページ数を監視するstateを定義
+  const [pagesQuantity, setPagesQuantity] = useState(0)
+
   // 親コンポーネントから以下をpropsとして受け取る
-  const { setCurPage, itemLimit, pagesQuantity, setPagesQuantity, curPage } =
-    props
+  const { setCurPage, itemLimit } = props
 
   // ページネーターでページが選択される度にstate:curPageが更新される
   const handlePageChange = (page) => {
     setCurPage(page - 1)
   }
-  console.log(curPage)
 
   // todosの要素数が変化するたびに、ページネーターのページ総数を変更
   useEffect(() => {
@@ -81,4 +82,4 @@ const Pagination = (props) => {
   )
 }
 
-export default Pagination
+export default PageRouting

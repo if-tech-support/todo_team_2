@@ -14,10 +14,7 @@ const TodoListChild = ({ curPage, itemLimit }) => {
   // itemLimit数に応じた新しいtodo配列を生成し、curItemsにセット
   useEffect(() => {
     const offset = curPage * itemLimit
-    const getList = () => {
-      setCurItems(todos.slice(offset, offset + itemLimit))
-    }
-    getList()
+    setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
   {
     return (
