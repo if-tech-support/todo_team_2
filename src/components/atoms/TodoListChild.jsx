@@ -6,7 +6,7 @@ import { todoState } from '../../hooks/TodoState'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const {id, status, created_day,updated_day, title} = props;
+  const {id, status, created_day, updated_day, title} = props;
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
@@ -14,14 +14,9 @@ const TodoListChild = (props) => {
   // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
   // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
-    // todos内で押下されたTodoのidが同じものを抽出し定数に代入
-    // 引数：処理、戻り値：処理結果
-    const newTodos = todos.map((todo) => {
-      if (todo.id === todoId) {
-        // statusをnot_activeに変更
-        todo = {...todo, position:'not_active'};
-      }
-      return todo;
+    // todos内で押下されたTodoのidが等しくないものを抽出し定数に代入
+    const newTodos = todos.filter((todo) => {
+      todo.id !== todoId;
     })
     // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
     setTodos(newTodos);

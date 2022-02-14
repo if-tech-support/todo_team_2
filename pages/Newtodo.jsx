@@ -63,7 +63,6 @@ export default function NewTodo() {
           status: 'not_started',
           created_day: currentTime,
           updated_day: currentTime,
-          position: 'active',
         },
         ...todos,
       ]

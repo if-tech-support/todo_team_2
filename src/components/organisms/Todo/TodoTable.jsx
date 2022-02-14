@@ -24,8 +24,6 @@ export default function TodosTable() {
         {
           // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
           todos.map((todo, index) => {
-          // todosの要素内にあるpositionがactiveなものだけを呼び出し表示
-          if(todo.position == 'active'){
             return(
             <TodoListChild 
             key={index}
@@ -36,7 +34,6 @@ export default function TodosTable() {
             title={todo.title}
             />
             )
-          }
           })
         }
       </Tbody>
