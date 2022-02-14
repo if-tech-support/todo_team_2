@@ -4,7 +4,6 @@ import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
 import { todoStatus } from '../atoms/status/todoStatus'
-
 import TodoPriority from './status/TodoPriority'
 
 const TodoListChild = () => {

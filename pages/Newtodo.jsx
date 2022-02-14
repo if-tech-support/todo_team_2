@@ -14,7 +14,6 @@ import Header from '../src/components/organisms/Header/Header'
 import { todoState } from '../src/hooks/TodoState'
 import { getTime } from '../src/utils/Now'
 
-
 export default function NewTodo() {
 
     // TodoState.jsで定義したtosos,setTodosを呼び出し

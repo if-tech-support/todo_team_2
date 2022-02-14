@@ -11,7 +11,7 @@ const TodoPriority = (props) => {
       set(todoState, (todoOld) => todoOld.map(
         todoOld => todoOld.id === id
         ? { ...todoOld, priority }
-        : t))
+        : todoOld))
     }
   )
   const handleChange = useCallback(
