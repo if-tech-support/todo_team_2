@@ -14,23 +14,26 @@ import Header from '../src/components/organisms/Header/Header'
 import { todoState } from '../src/hooks/TodoState'
 import { getTime } from '../src/utils/Now'
 
+
 export default function NewTodo() {
-  // TodoState.jsで定義したtosos,setTodosを呼び出し
-  const [todos, setTodos] = useRecoilState(todoState)
 
-  // Now.jsで定義したcurerntTimeを呼び出し
-  const { currentTime } = getTime()
+    // TodoState.jsで定義したtosos,setTodosを呼び出し
+    const [todos, setTodos] = useRecoilState(todoState)
 
-  const [title, setTitle] = useState('')
-  const [detail, setDetail] = useState('')
-  const [priority, setPriority] = useState('')
+    // Now.jsで定義したcurerntTimeを呼び出し
+    const { currentTime } = getTime()
 
-  // 新しいTodoのidを定義
-  const id =
-    // ミリ単位での日付を取得し文字列型に変更
-    new Date().getTime().toString() +
-    // 乱数を取得し文字列型に変更し文字列連結
-    Math.floor(Math.random() * 10).toString()
+    const [title, setTitle] = useState('')
+    const [detail, setDetail] = useState('')
+    const [priority, setPriority] = useState('')
+
+    // 新しいTodoのidを定義
+    const id =
+      // ミリ単位での日付を取得し文字列型に変更
+      new Date().getTime().toString() +
+      // 乱数を取得し文字列型に変更し文字列連結
+      Math.floor(Math.random() * 10).toString()
+
 
   // Todosに新しいTodoを追加
   const onSubmit = () => {
@@ -63,7 +66,7 @@ export default function NewTodo() {
           </Flex>
           <Title title={title} setTitle={setTitle} />
           <DetailTextarea detail={detail} setDetail={setDetail} />
-          <RadioPriority setPriority={setPriority} />
+          <RadioPriority priority={priority} setPriority={setPriority} />
 
           <Flex>
             <HStack spacing="24px" pos="absolute" right="20">
