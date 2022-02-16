@@ -7,6 +7,8 @@ const { persistAtom } = recoilPersist()
 export const todoState = atom({
   key: 'todos',
   default: [],
+  storage: typeof window === 'undefined' ? undefined : window.sessionStorage,
+
   // 状態を永続化
   effects_UNSTABLE: [persistAtom],
 })
