@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { commentState, dateState } from '../../../hooks/CommentState'
 import { getTime } from '../../../utils/Now'
@@ -19,12 +19,10 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 
-
-
 export const CommentModal = () => {
   // 名前とコメントをuseStateで設定
-  const [name, setName] = useState("")
-  const [comment, setComment] = useState("")
+  const [name, setName] = useState('')
+  const [comment, setComment] = useState('')
   // CommentState.jsで定義したcommentStateを呼び出し
   const [comments, setComments] = useRecoilState(commentState)
 
@@ -36,36 +34,31 @@ export const CommentModal = () => {
   // CREATEボタンを押したときの挙動
   const onAddComment = () => {
     // timesにcurrentTime(コメント作成日)を追加する
-    setTimes([
-      ...times,
-      currentTime,
-    ]);
+    setTimes([...times, currentTime])
     // 入力された値が空のときにアラートを表示する
     if (!name && comment) {
-      alert("名前が空です")
+      alert('名前が空です')
     } else if (!comment && name) {
-      alert("コメントが空です")
+      alert('コメントが空です')
     } else if (!name && !comment) {
-      alert("名前とコメントが空です")
+      alert('名前とコメントが空です')
     } else {
-    // commentsにid,name,comment,createdAtを持つオブジェクト（作成したコメント情報）を追加
-      setComments(
-        [
-          ...comments,
-          {
-            id: times.length + 1,
-            name: name,
-            comment: comment,
-            createdAt: currentTime,
-          },
-        ]
-      )
+      // commentsにid,name,comment,createdAtを持つオブジェクト（作成したコメント情報）を追加
+      setComments([
+        ...comments,
+        {
+          id: times.length + 1,
+          name: name,
+          comment: comment,
+          createdAt: currentTime,
+        },
+      ])
       // モーダルを閉じるためにisOpenをfalseにする
       onClose()
-    };
+    }
     // モーダルに入力した値を初期化
-    setName("")
-    setComment("")
+    setName('')
+    setComment('')
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -74,7 +67,7 @@ export const CommentModal = () => {
   return (
     <>
       {/* CommentButton.jsxからインポート */}
-      <CommentButton onClick={onOpen}/>
+      <CommentButton onClick={onOpen} />
       <Modal initialFocusRef={initialRef} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
@@ -103,12 +96,7 @@ export const CommentModal = () => {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button
-              color="white"
-              bg="green.600"
-              mr={3}
-              onClick={onAddComment}
-            >
+            <Button color="white" bg="green.600" mr={3} onClick={onAddComment}>
               CREATE
             </Button>
             <Button onClick={onClose}>CANCEL</Button>

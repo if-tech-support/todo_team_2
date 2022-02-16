@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Container,
-  Flex,
-  Heading,
-  HStack,
-  Spacer,
-} from '@chakra-ui/react'
+import { Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
@@ -33,7 +27,7 @@ function ShowTodo() {
         <HStack spacing={1}>
           <DetailCard />
           {/* <Stack pb="5" h="480" w="xl"> */}
-          <Comment/>
+          <Comment />
           {/* </Stack> */}
         </HStack>
         {/* ここにページネーションが入ります */}
