@@ -25,8 +25,7 @@ export default function TodosTable() {
           // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
           todos.map((todo, index) => {
             return(
-            <TodoListChild 
-            key={index}
+            <TodoListChild
             id={todo.id}
             status={todo.status}
             created_day={todo.created_day}
