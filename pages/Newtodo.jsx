@@ -15,24 +15,22 @@ import { todoState } from '../src/hooks/TodoState'
 import { getTime } from '../src/utils/Now'
 
 export default function NewTodo() {
+  // TodoState.jsで定義したtosos,setTodosを呼び出し
+  const [todos, setTodos] = useRecoilState(todoState)
 
-    // TodoState.jsで定義したtosos,setTodosを呼び出し
-    const [todos, setTodos] = useRecoilState(todoState)
+  // Now.jsで定義したcurerntTimeを呼び出し
+  const { currentTime } = getTime()
 
-    // Now.jsで定義したcurerntTimeを呼び出し
-    const { currentTime } = getTime()
+  const [title, setTitle] = useState('')
+  const [detail, setDetail] = useState('')
+  const [priority, setPriority] = useState('')
 
-    const [title, setTitle] = useState('')
-    const [detail, setDetail] = useState('')
-    const [priority, setPriority] = useState('')
-
-    // 新しいTodoのidを定義
-    const id =
-      // ミリ単位での日付を取得し文字列型に変更
-      new Date().getTime().toString() +
-      // 乱数を取得し文字列型に変更し文字列連結
-      Math.floor(Math.random() * 10).toString()
-
+  // 新しいTodoのidを定義
+  const id =
+    // ミリ単位での日付を取得し文字列型に変更
+    new Date().getTime().toString() +
+    // 乱数を取得し文字列型に変更し文字列連結
+    Math.floor(Math.random() * 10).toString()
 
   // Todosに新しいTodoを追加
   const onSubmit = () => {
@@ -42,7 +40,7 @@ export default function NewTodo() {
         title,
         detail,
         priority,
-        status: 'not_started',
+        status: 'NOT STARTED',
         created_day: currentTime,
       },
       ...todos,
