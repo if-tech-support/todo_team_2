@@ -7,9 +7,6 @@ import { todoState } from '../../hooks/TodoState'
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
   const {id, status, created_day, updated_day, title} = props;
-  
-  
-  
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
