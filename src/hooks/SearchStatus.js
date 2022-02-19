@@ -7,13 +7,13 @@ export const searchPriorityState = atom({
   key: 'searchPriority',
   default: "",
   // 状態を永続化
- effects_UNSTABLE: [persistAtom],
+//  effects_UNSTABLE: [persistAtom],
 })
 
 export const searchStatusState = atom({
   key: 'searchStatus',
   default: "",
   // 状態を永続化
- effects_UNSTABLE: [persistAtom],
+//  effects_UNSTABLE: [persistAtom],
 })
 

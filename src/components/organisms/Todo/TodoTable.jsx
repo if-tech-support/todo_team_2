@@ -3,6 +3,7 @@ import { Table, Tbody, Thead, Th, Tr } from '@chakra-ui/react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 import TodoListChild from '../../atoms/TodoListChild'
+import { useRouter } from 'next/router'
 import {
   searchPriorityState,
   searchStatusState,
@@ -15,9 +16,10 @@ export default function TodosTable({ curPage, itemLimit }) {
   // 表示中のtodo数を監視するstateを定義
   const [curItems, setCurItems] = useState([])
 
-  // 選択されたpriorityとstatusを呼び出す
   const selectedPriority = useRecoilValue(searchPriorityState)
   const selectedStatus = useRecoilValue(searchStatusState)
+  const [isSearched, setIsSearched] = useState(false)
+
   // 条件に合うtodoの配列を格納するstateを定義
   const [selectedItems, setSelectedItems] = useState([])
 
@@ -29,20 +31,23 @@ export default function TodosTable({ curPage, itemLimit }) {
 
   // 選択されたpriorityかstatusを含むtodoを抽出
   useEffect(() => {
-    if (selectedPriority !== '' || selectedStatus !== '') {
-      const searchPriorityItems = curItems.filter(
-        (item) => item.priority === selectedPriority
+    if (selectedPriority) {
+      setIsSearched(true)
+      const searchPriorityItems = todos.filter(
+        (todo) => todo.priority === selectedPriority
       )
-      const searchStatusItems = curItems.filter(
-        (item) => item.status === selectedStatus
+      setSelectedItems(searchPriorityItems)
+    } else if (selectedStatus) {
+      setIsSearched(true)
+      const searchStatusItems = todos.filter(
+        (todo) => todo.status === selectedStatus
       )
-      setSelectedItems(searchPriorityItems || searchStatusItems)
+      setSelectedItems(searchStatusItems)
+    } else {
+      setIsSearched(false)
     }
-  }, [])
+  }, [selectedPriority, selectedStatus])
 
-  console.log(selectedItems)
-  console.log(selectedPriority)
-  console.log(selectedStatus)
 
   return (
     <Table size="md">
@@ -57,9 +62,9 @@ export default function TodosTable({ curPage, itemLimit }) {
         </Tr>
       </Thead>
       <Tbody>
-        {selectedItems === []
+        {isSearched
           ? // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
-            curItems.map((todo, index) => {
+            selectedItems.map((todo, index) => {
               return (
                 <TodoListChild
                   id={todo.id}
@@ -70,7 +75,7 @@ export default function TodosTable({ curPage, itemLimit }) {
                 />
               )
             })
-          : selectedItems.map((todo, index) => {
+          : curItems.map((todo, index) => {
               return (
                 <TodoListChild
                   id={todo.id}

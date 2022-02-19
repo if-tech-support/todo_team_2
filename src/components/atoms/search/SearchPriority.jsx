@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { Text } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
 import Router from 'next/router'
+import { useSetRecoilState } from 'recoil'
+import { searchPriorityState } from '../../../hooks/SearchStatus'
 
 export const SearchPriority = () => {
-  const [selectedPriority, setSelectedPriority] = useState("");
+  const setSelectedPriority = useSetRecoilState(searchPriorityState)
 
   const onSearchPriority = (e) => {
     setSelectedPriority(e.target.value)
-    Router.push('/')
   }
 
   return (
