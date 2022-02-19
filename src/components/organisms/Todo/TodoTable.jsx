@@ -31,7 +31,7 @@ export default function TodosTable({ curPage, itemLimit }) {
           <Th>Update</Th>
           <Th>Action</Th>
         </Tr>
-      </Thead
+      </Thead>
       <Tbody>
         {
           // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う
