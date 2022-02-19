@@ -1,8 +1,14 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { Flex, Spacer, IconButton } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 
 function MainButtons() {
+  // 新規作成画面に遷移
+  const router = useRouter()
+  const nextTodoRouting = () => {
+    router.push('/Newtodo/')
+  }
   return (
     <Flex>
       <IconButton
@@ -23,6 +29,7 @@ function MainButtons() {
         _hover={{
           opacity: 0.9,
         }}
+        onClick={nextTodoRouting}
       />
       <Spacer />
       <IconButton

@@ -1,7 +1,7 @@
 import { Table, Tbody, Thead, Th, Tr, Td } from '@chakra-ui/react'
 import TodoListChild from '../../atoms/TodoListChild'
 
-export default function TodosTable() {
+export default function TodosTable({ curPage, itemLimit }) {
   return (
     <Table size="md">
       <Thead bg="green.300">
@@ -15,7 +15,7 @@ export default function TodosTable() {
         </Tr>
       </Thead>
 
-      <TodoListChild />
+      <TodoListChild curPage={curPage} itemLimit={itemLimit} />
     </Table>
   )
 }
