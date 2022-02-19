@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 import { recoilPersist } from 'recoil-persist'
 
-const { persistAtom } = recoilPersist()
+const { persistAtom } = recoilPersist();
 
 // TODOリストの状態を保持する Atoms を作成
 export const todoState = atom({
@@ -10,6 +10,6 @@ export const todoState = atom({
   storage: typeof window === 'undefined' ? undefined : window.sessionStorage,
 
   // 状態を永続化
-  effects_UNSTABLE: [persistAtom],
+ effects_UNSTABLE: [persistAtom],
 })
 
