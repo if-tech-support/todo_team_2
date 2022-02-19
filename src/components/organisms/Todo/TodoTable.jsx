@@ -34,7 +34,7 @@ export default function TodosTable({ curPage, itemLimit }) {
       </Thead>
       <Tbody>
         {
-          // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
+          // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う
           curItems.map((todo, index) => {
             return(
             <TodoListChild
