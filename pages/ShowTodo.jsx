@@ -7,8 +7,10 @@ import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
 import { Comment } from '../src/components/atoms/comment/Comment'
 import { CommentModal } from '../src/components/organisms/Modal/CommentModal'
+import { useRouter } from 'next/router'
 
 function ShowTodo() {
+  const router = useRouter()
   return (
     <>
       <Header />
@@ -27,7 +29,12 @@ function ShowTodo() {
           </Flex>
         </Flex>
         <HStack spacing={1}>
-          <DetailCard />
+          {/* 詳細画面に表示するためにpropsとしてtitle,detail,created_dayを渡す */}
+          <DetailCard
+            title={router.query.title}
+            detail={router.query.detail}
+            created_day={router.query.created_day}
+          />
           {/* <Stack pb="5" h="480" w="xl"> */}
           <Comment />
           {/* </Stack> */}

@@ -3,6 +3,7 @@ import { Tbody, Tr, Td, Button, Select } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
+import { useRouter } from 'next/router'
 
 const TodoListChild = ({ curPage, itemLimit }) => {
   // TodoState.jsで定義したtodos,setTodosを呼び出し
@@ -10,6 +11,8 @@ const TodoListChild = ({ curPage, itemLimit }) => {
 
   // 表示中のtodo数を監視するstateを定義
   const [curItems, setCurItems] = useState([])
+
+  const router = useRouter()
 
   // itemLimit数に応じた新しいtodo配列を生成し、curItemsにセット
   useEffect(() => {
@@ -21,7 +24,22 @@ const TodoListChild = ({ curPage, itemLimit }) => {
     <Tbody>
       {curItems.map((curItem) => (
         <Tr key={curItem.id}>
-          <Td fontSize="16px" fontWeight="bold">
+          <Td
+            fontSize="16px"
+            fontWeight="bold"
+            cursor="pointer"
+            // routerを使ってtitle,detail,created_dayをqueryとして渡してShowTodoに遷移させる
+            onClick={() => {
+              router.push({
+                pathname: 'ShowTodo',
+                query: {
+                  title: curItem.title,
+                  detail: curItem.detail,
+                  created_day: curItem.created_day,
+                },
+              })
+            }}
+          >
             {curItem.title}
           </Td>
           <Td>
@@ -44,7 +62,6 @@ const TodoListChild = ({ curPage, itemLimit }) => {
           </Td>
         </Tr>
       ))}
-
     </Tbody>
   )
 }
