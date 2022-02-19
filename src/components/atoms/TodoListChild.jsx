@@ -14,7 +14,7 @@ const TodoListChild = (props) => {
   // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
   // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
-    // todos内で押下されたTodoのidが等しくないものを抽出し定数に代入
+    // todos内で押下されたTodoのidと等しくないものを抽出し定数に代入
     const newTodos = todos.filter((todo) => 
       todo.id !== todoId
     )
