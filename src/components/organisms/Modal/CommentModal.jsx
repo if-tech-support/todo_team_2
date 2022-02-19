@@ -1,8 +1,8 @@
-import React, { useState }from 'react'
+import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { commentState, dateState } from '../../../hooks/CommentsState'
+import { commentState, dateState } from '../../../hooks/CommentState'
 import { getTime } from '../../../utils/Now'
-import CommentButton from '../../components/atoms/button/CommentButton.jsx'
+import CommentButton from '../../atoms/button/CommentButton'
 
 import {
   Button,
@@ -19,32 +19,46 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 
-export default function CommentModal() {
-
-  const [name, setName] = useState("")
-  const [comment, setComment] = useState("")
+export const CommentModal = () => {
+  // 名前とコメントをuseStateで設定
+  const [name, setName] = useState('')
+  const [comment, setComment] = useState('')
+  // CommentState.jsで定義したcommentStateを呼び出し
   const [comments, setComments] = useRecoilState(commentState)
 
+  // Now.jsで定義したcurrentTimeを呼び出し
   const { currentTime } = getTime()
+  // CommentState.jsで定義したdateStateを呼び出し
   const [times, setTimes] = useRecoilState(dateState)
-  const [id, setId] = useState(0)
 
+  // CREATEボタンを押したときの挙動
   const onAddComment = () => {
-    setTimes([
-      ...times,
-      currentTime,
-    ])
-    setComments(
-      [
+    // timesにcurrentTime(コメント作成日)を追加する
+    setTimes([...times, currentTime])
+    // 入力された値が空のときにアラートを表示する
+    if (!name && comment) {
+      alert('名前が空です')
+    } else if (!comment && name) {
+      alert('コメントが空です')
+    } else if (!name && !comment) {
+      alert('名前とコメントが空です')
+    } else {
+      // commentsにid,name,comment,createdAtを持つオブジェクト（作成したコメント情報）を追加
+      setComments([
         ...comments,
-        { id: times.length + 1, name: name, comment: comment, createdAt: currentTime},
-      ]
-    )
-    onClose()
-    setName("")
-    setComment("")
-    // setComments([])
-    // setTimes([])
+        {
+          id: times.length + 1,
+          name: name,
+          comment: comment,
+          createdAt: currentTime,
+        },
+      ])
+      // モーダルを閉じるためにisOpenをfalseにする
+      onClose()
+    }
+    // モーダルに入力した値を初期化
+    setName('')
+    setComment('')
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -52,20 +66,8 @@ export default function CommentModal() {
 
   return (
     <>
-      <Button
-      backgroundColor="green.600"
-      borderRadius="50px"
-      border="1px solid"
-      borderColor="rgba(0, 0, 0, 0.8)"
-      color="white"
-      w="112px"
-      h="40px"
-      variant="solid"
-      _hover={{ backgroundColor: 'green.400' }}
-      onClick={onOpen}
-    >
-      Comment
-    </Button>
+      {/* CommentButton.jsxからインポート */}
+      <CommentButton onClick={onOpen} />
       <Modal initialFocusRef={initialRef} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
@@ -94,12 +96,7 @@ export default function CommentModal() {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button
-              color="white"
-              bg="green.600"
-              mr={3}
-              onClick={onAddComment}
-            >
+            <Button color="white" bg="green.600" mr={3} onClick={onAddComment}>
               CREATE
             </Button>
             <Button onClick={onClose}>CANCEL</Button>

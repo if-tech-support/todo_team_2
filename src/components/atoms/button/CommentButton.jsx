@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/button'
 import React from 'react'
-
-const CommentButton = () => {
+// onClickとpropsを追加
+const CommentButton = (props) => {
   return (
     <Button
       backgroundColor="green.600"
@@ -13,6 +13,7 @@ const CommentButton = () => {
       h="40px"
       variant="solid"
       _hover={{ backgroundColor: 'green.400' }}
+      onClick={props.onClick}
     >
       Comment
     </Button>

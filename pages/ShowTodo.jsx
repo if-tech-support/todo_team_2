@@ -1,4 +1,5 @@
 import React from 'react'
+=======
 import {
   Container,
   Flex,
@@ -9,15 +10,18 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
-import CommentButton from '../src/components/atoms/button/CommentButton'
-import Comment from '../src/components/atoms/comment/Comment'
+import { Comment } from '../src/components/atoms/comment/Comment'
+import { CommentModal } from '../src/components/organisms/Modal/CommentModal'
+
 
 function index() {
   //Routerを定義
   const router = useRouter()
+
 
   return (
     <>
@@ -31,12 +35,13 @@ function index() {
           {/* 以上には現在プルリク中のHeadline.jsxが入ります*/}
           <Spacer />
           <Flex width="25%">
-            <CommentButton />
+            <CommentModal />
             <Spacer />
             <BackButton />
           </Flex>
         </Flex>
         <HStack spacing={1}>
+
           {/* トップから渡ってきたquery情報をDerailCardに渡す */}
           <DetailCard
             title={router.query.title}
@@ -46,6 +51,7 @@ function index() {
           <VStack pb="5" h="480" w="xl">
             <Comment />
           </VStack>
+
         </HStack>
         {/* ここにページネーションが入ります */}
       </Container>
@@ -53,4 +59,4 @@ function index() {
   )
 }
 
-export default index
+export default ShowTodo
