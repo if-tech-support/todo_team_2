@@ -1,12 +1,28 @@
 import React from 'react'
-import { Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
+=======
+import {
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Spacer,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
 import { Comment } from '../src/components/atoms/comment/Comment'
 import { CommentModal } from '../src/components/organisms/Modal/CommentModal'
 
-function ShowTodo() {
+
+function index() {
+  //Routerを定義
+  const router = useRouter()
+
+
   return (
     <>
       <Header />
@@ -25,10 +41,17 @@ function ShowTodo() {
           </Flex>
         </Flex>
         <HStack spacing={1}>
-          <DetailCard />
-          {/* <Stack pb="5" h="480" w="xl"> */}
-          <Comment />
-          {/* </Stack> */}
+
+          {/* トップから渡ってきたquery情報をDerailCardに渡す */}
+          <DetailCard
+            title={router.query.title}
+            detail={router.query.detail}
+            created_day={router.query.created_day}
+          />
+          <VStack pb="5" h="480" w="xl">
+            <Comment />
+          </VStack>
+
         </HStack>
         {/* ここにページネーションが入ります */}
       </Container>
