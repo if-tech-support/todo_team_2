@@ -12,6 +12,7 @@ const TodoListChild = (props) => {
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
 
+
   // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
   // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
@@ -22,6 +23,7 @@ const TodoListChild = (props) => {
     // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
     setTodos(newTodos);
   }
+
   return (
     <Tr key={id}>
       <Td fontSize="16px" fontWeight="bold">
