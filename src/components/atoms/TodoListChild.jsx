@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { Tbody, Tr, Td, Button, Select } from '@chakra-ui/react'
+import React from 'react'
+import { Tr, Td, Button, Select } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
 import { useRouter } from 'next/router'
 
-const TodoListChild = ({ curPage, itemLimit }) => {
+const TodoListChild = (props) => {
+  // TodoTableより引き渡されたpropsを展開
+  const {id, status, created_day, updated_day, title} = props;
+
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
-
-  // 表示中のtodo数を監視するstateを定義
-  const [curItems, setCurItems] = useState([])
-
-  const router = useRouter()
-
-  // itemLimit数に応じた新しいtodo配列を生成し、curItemsにセット
-  useEffect(() => {
-    const offset = curPage * itemLimit
-    setCurItems(todos.slice(offset, offset + itemLimit))
-  }, [curPage, todos.length])
+  
+  // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
+  // 引数　：ID、戻り値：無し
+  const onClickTrash = (todoId) => {
+    // todos内で押下されたTodoのidと等しくないものを抽出し定数に代入
+    const newTodos = todos.filter((todo) =>
+      todo.id !== todoId
+    )
+    // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
+    setTodos(newTodos);
+  }
 
   return (
     <Tbody>
