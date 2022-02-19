@@ -10,11 +10,8 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import EditButton from '../../atoms/button/EditButton'
-import { useRouter } from 'next/router'
 
-export default function DetailCard({ title, detail, created_day }) {
-  const router = useRouter()
-
+export default function DetailCard() {
   return (
     <VStack
       p={3}
@@ -30,31 +27,31 @@ export default function DetailCard({ title, detail, created_day }) {
         <Heading as="h2" size="md" bg="green.300" px={3} my={1}>
           Title
         </Heading>
-        <Text fontSize="lg">{title}</Text>
+        <Text fontSize="lg">Text</Text>
       </Box>
       <Box w="full" h="full" minHeight={0}>
         <Heading as="h2" size="md" bg="green.300" px={3} my={1}>
           Detail
         </Heading>
         <Box h="100%" overflow="scroll">
-          <Text fontSize="lg">{detail}</Text>
+          <Text fontSize="lg">Text</Text>
         </Box>
       </Box>
       <Spacer />
       <Flex pt={3} w="full">
         <Flex justifyContent="flex-end" w="full" p={4}>
-          <Box onClick={() => router.push('/EditTodo')}>
+          <Box>
             <EditButton />
           </Box>
           ‌ <Spacer />
-          <Stat whiteSpace="nowrap">
+          <Stat>
             <StatLabel fontSize="sm">Updated at</StatLabel>
             <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
           </Stat>
           <Spacer />
-          <Stat whiteSpace="nowrap">
+          <Stat>
             <StatLabel fontSize="sm">Created at</StatLabel>
-            <StatNumber fontSize="md">{created_day}</StatNumber>
+            <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
           </Stat>
         </Flex>
       </Flex>
