@@ -1,42 +1,14 @@
 import React from 'react'
-import { Tbody, Tr, Td, Button, Select } from '@chakra-ui/react'
+import { Tr, Td, Button, Select } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { todoState } from '../../hooks/TodoState'
 import { useRecoilState } from 'recoil'
 
-import TodoStatus from '../atoms/status/todoStatus'
 import TodoPriority from './status/TodoPriority'
-
-// const TodoListChild = () => {
-//   // TodoState.jsで定義したtosos,setTodosを呼び出し
-//   const [todos, setTodos] = useRecoilState(todoState)
-
-//   return (
-// <Tbody>
-//   {todos.map((todo, index) => (
-//     <Tr key={todo.id}>
-//       <Td fontSize="16px" fontWeight="bold">
-//         {todo.title}
-//       </Td>
-//       <Td>
-//         <TodoStatus status={todo.status} />
-//       </Td>
-//       <Td>
-//         <TodoPriority id={todo.id} priority={todo.priority} />
-//       </Td>
-//       <Td fontSize="14px">{todo.created_day}</Td>
-//       <Td fontSize="14px">2020-11-8 18:55</Td>
-//       <Td>
-//         <EditIcon w={18} h={18} me={5} />
-//         <DeleteIcon w={18} h={18} />
-//       </Td>
-//     </Tr>
-//   ))}
-// </Tbody>
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title } = props
+  const { id, status, created_day, updated_day, title, todo } = props
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
@@ -49,6 +21,41 @@ const TodoListChild = (props) => {
     // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
     setTodos(newTodos)
   }
+
+  // ステータスボタンをクリックしたら、Statusが変わります
+  const handleTodoStatus = () => {
+    const switchTodoStatus = JSON.parse(JSON.stringify(todos))
+    if (switchTodoStatus[index].status === 'NOT STARTED') {
+      switchTodoStatus[index].status = 'DOING'
+    } else if (switchTodoStatus[index].status === 'DOING') {
+      switchTodoStatus[index].status = 'DONE'
+    } else if (switchTodoStatus[index].status === 'DONE') {
+      switchTodoStatus[index].status = 'NOT STARTED'
+    }
+    setTodos(switchTodoStatus)
+  }
+
+  // ステータスによってボタンの背景色が変更
+  const bgColor = (status) => {
+    if (status === 'NOT STARTED') {
+      return 'green.50'
+    } else if (status === 'DOING') {
+      return 'green.600'
+    } else if (status === 'DONE') {
+      return 'green.300'
+    }
+  }
+  // ステータスによってボタンのテキスト色が変更
+  const textColor = (status) => {
+    if (status === 'NOT STARTED') {
+      return 'black'
+    } else if (status === 'DOING') {
+      return 'white'
+    } else if (status === 'DONE') {
+      return 'black'
+    }
+  }
+
   return (
     <Tr key={id}>
       <Td fontSize="16px" fontWeight="bold">
@@ -56,9 +63,20 @@ const TodoListChild = (props) => {
         {/* <TodoStatus status={todo.status} /> */}
       </Td>
       <Td>
-        <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
+        {/* <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
           {status}
-        </Button>
+        </Button> */}
+        {/* <Button
+          rounded="full"
+          bg={bgColor(todo.status)}
+          color={textColor(todo.status)}
+          size="lg"
+          fontSize="12px"
+          _hover={{ opacity: 0.8 }}
+          onClick={() => handleTodoStatus(index)}
+        >
+          {status}
+        </Button> */}
       </Td>
       <Td>
         <Select borderColor="tomato" fontSize="16px">
