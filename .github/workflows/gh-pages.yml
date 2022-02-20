@@ -1,17 +1,22 @@
+# GitHub リポジトリの [Actions] タブに表示されるワークフローの名前を任意で指定
 name: GitHub Pages
 
-# mainブランチにプッシュしたときにjobsに記述した操作を行う
+# ここではワークフローを起動させる特定のイベントを指定する
+# mainブランチにプッシュしたときにjobsに記述した操作（＝デプロイ）を行う
 on:
   push:
     branches:
       - main
 
+# 本GitHub Pagesワークフローで実行されるjobを全て記載
 jobs:
   deploy:
-    # ubuntu OSを仮想マシン上に用意する
+    # ここではワークフローを実行するランナー（仮想マシン上で動く）を指定する
     runs-on: ubuntu-20.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+
+    # ワークフローは以下の順に実行される
     steps:
       - uses: actions/checkout@v2
 
@@ -19,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '14.17.0'
+          node-version: '14'
 
       # yarn addの際にキャッシュを使うよう設定
       - name: Cache dependencies
