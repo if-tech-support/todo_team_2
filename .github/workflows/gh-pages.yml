@@ -1,0 +1,62 @@
+name: GitHub Pages
+
+# mainブランチにプッシュしたときにjobsに記述した操作を行う
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    # ubuntu OSを仮想マシン上に用意する
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+
+      # Node.js環境のセットアップを行う
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.0'
+
+      # yarn addの際にキャッシュを使うよう設定
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # yarn.lockに基づき依存パッケージをインストールする
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      # Next.jsアプリをビルドする
+      # プロジェクトルート直下に.nextディレクトリができる
+      - name: Build
+        run: yarn　build
+
+      # 静的なHTMLとしてNext.jsアプリを生成する
+      # プロジェクトルート直下にoutディレクトリができる
+      #そのなかに、HTMLファイル群と、それらが読み込むJSファイル群を収めた_nextディレクトリがある
+      - name: Export
+        run: yarn export
+
+      # しかしGitHub Pagesの仕様として_から始まるディレクトリが見えず404となる
+      # つまりHTMLからJSを読み込めない
+      # これを回避するために.nojekyllファイルをoutディレクトリに作る
+      - name: Add Nojekyll
+        run: touch ./out/.nojekyll
+
+      # gh-pagesブランチを自動的に作成する
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          # トークンは自動的に生成される
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # gh-pagesブランチ作成の際にoutディレクトリの中身をプッシュする
+          publish_dir: ./out
