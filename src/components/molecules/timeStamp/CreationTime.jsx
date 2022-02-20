@@ -1,4 +1,4 @@
-import { Stat, StatLabel, StatNumber } from '@chakra-ui/react'
+import { Stat, StatLabel, StatNumber, Text } from '@chakra-ui/react'
 import React from 'react'
 
 export const CreationTime = (props) => {
@@ -19,7 +19,7 @@ export const CreationTime = (props) => {
         lineHeight="1.1"
         fontWeight="medium"
       >
-        {created_day}
+        <Text>{created_day}</Text>
       </StatNumber>
     </Stat>
   )
