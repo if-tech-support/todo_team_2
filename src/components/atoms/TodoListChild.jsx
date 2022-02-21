@@ -7,11 +7,23 @@ import { todoState } from '../../hooks/TodoState'
 import { editTodoState } from '../../hooks/EditTodoState'
 
 const TodoListChild = () => {
+  // TodoTableより引き渡されたpropsを展開
+  const { id, status, created_day, updated_day, title } = props
+
   const router = useRouter()
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
   // EditTodoState.jsで定義したeditTodoの状態を更新するための関数を呼び出す
   const setEditTodo = useSetRecoilState(editTodoState)
+
+  // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
+  // 引数　：ID、戻り値：無し
+  const onClickTrash = (todoId) => {
+    // todos内で押下されたTodoのidと等しくないものを抽出し定数に代入
+    const newTodos = todos.filter((todo) => todo.id !== todoId)
+    // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
+    setTodos(newTodos)
+  }
 
   const handleClickEdit = (selectedTodo) => {
     setEditTodo(selectedTodo)
@@ -45,7 +57,13 @@ const TodoListChild = () => {
               h={18}
               me={5}
             />
-            <DeleteIcon w={18} h={18} />
+            {/* Todoをゴミ箱に移動するメソッドを呼び出し */}
+            <DeleteIcon
+              w={18}
+              h={18}
+              cursor={'pointer'}
+              onClick={() => onClickTrash(id)}
+            />
           </Td>
         </Tr>
       ))}
