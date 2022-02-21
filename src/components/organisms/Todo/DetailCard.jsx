@@ -9,18 +9,28 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
-import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
-import { todoState } from '../../../hooks/TodoState';
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+import { todoState } from '../../../hooks/TodoState'
 import EditButton from '../../atoms/button/EditButton'
 
 export default function DetailCard() {
   // 渡されたidを取得するためにuseRouterを使用
-  const router = useRouter();
+  const router = useRouter()
   // 現存するtodosを呼び出し
-  const todos = useRecoilValue(todoState);
+  const todos = useRecoilValue(todoState)
+  // 詳細情報を保持するstateを設定
+  const [todoDetail, setTodoDetail] = useState({})
   // idが渡されたidと最初に一致したtodoを取得
-  const todoDetail = todos.find(todo => todo.id === router.query.id);
+  useEffect(() => {
+    if (router.query.id) {
+      setTodoDetail(todos.find((todo) => todo.id === router.query.id))
+    } else {
+      router.push('/')
+    }
+  }, [])
 
   return (
     <VStack
