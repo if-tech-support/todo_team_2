@@ -23,7 +23,7 @@ export default function DetailCard() {
   const todos = useRecoilValue(todoState)
   // 詳細情報を保持するstateを設定
   const [todoDetail, setTodoDetail] = useState({})
-  // idが渡されたidと最初に一致したtodoを取得
+  // idが渡されたidと最初に一致したtodoを取得し、idが渡されていなければ一覧画面に遷移する
   useEffect(() => {
     if (router.query.id) {
       setTodoDetail(todos.find((todo) => todo.id === router.query.id))
