@@ -18,6 +18,7 @@ import {
   useDisclosure,
   Textarea,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
 export const CommentModal = () => {
   // 名前とコメントをuseStateで設定
@@ -28,13 +29,19 @@ export const CommentModal = () => {
 
   // Now.jsで定義したcurrentTimeを呼び出し
   const { currentTime } = getTime()
-  // CommentState.jsで定義したdateStateを呼び出し
-  const [times, setTimes] = useRecoilState(dateState)
+
+  // 新しいcommentのidを定義
+  const id =
+    // ミリ単位での日付を取得し文字列型に変更
+    new Date().getTime().toString() +
+    // 乱数を取得し文字列型に変更し文字列連結
+    Math.floor(Math.random() * 10).toString()
+
+  // 対象となるtodoのidを取得するためにuseRouterを使用
+  const router = useRouter()
 
   // CREATEボタンを押したときの挙動
   const onAddComment = () => {
-    // timesにcurrentTime(コメント作成日)を追加する
-    setTimes([...times, currentTime])
     // 入力された値が空のときにアラートを表示する
     if (!name && comment) {
       alert('名前が空です')
@@ -47,7 +54,9 @@ export const CommentModal = () => {
       setComments([
         ...comments,
         {
-          id: times.length + 1,
+          id: id,
+          // 対象となるtodoのidを取得して設定
+          todoId: router.query.id,
           name: name,
           comment: comment,
           createdAt: currentTime,
