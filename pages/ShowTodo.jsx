@@ -7,7 +7,6 @@ import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
 import { Comment } from '../src/components/atoms/comment/Comment'
 import { CommentModal } from '../src/components/organisms/Modal/CommentModal'
-import { useRouter } from 'next/router'
 
 function ShowTodo() {
   return (
