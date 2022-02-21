@@ -7,26 +7,37 @@ import { useRouter } from 'next/router'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const {id, status, created_day, updated_day, title} = props;
+  const { id, title, status, created_day, updated_day } = props
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
 
+  // 必要な情報を持って画面遷移するためにuseRouterを使用
+  const router = useRouter()
 
   // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
   // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
     // todos内で押下されたTodoのidと等しくないものを抽出し定数に代入
-    const newTodos = todos.filter((todo) =>
-      todo.id !== todoId
-    )
+    const newTodos = todos.filter((todo) => todo.id !== todoId)
     // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
-    setTodos(newTodos);
+    setTodos(newTodos)
   }
 
   return (
     <Tr key={id}>
-      <Td fontSize="16px" fontWeight="bold">
+      <Td
+        fontSize="16px"
+        fontWeight="bold"
+        cursor="pointer"
+        // queryにidを渡して/ShowTodoに遷移
+        onClick={() => router.push({
+          pathname: "ShowTodo",
+          query: {
+            id: id
+          }
+        })}
+      >
         {title}
       </Td>
       <Td>
@@ -46,7 +57,12 @@ const TodoListChild = (props) => {
       <Td>
         <EditIcon w={18} h={18} me={5} />
         {/* Todoをゴミ箱に移動するメソッドを呼び出し */}
-        <DeleteIcon w={18} h={18} cursor={"pointer"} onClick={() => onClickTrash(id)}/>
+        <DeleteIcon
+          w={18}
+          h={18}
+          cursor={'pointer'}
+          onClick={() => onClickTrash(id)}
+        />
       </Td>
     </Tr>
   )

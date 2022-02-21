@@ -18,8 +18,6 @@ export default function TodosTable({ curPage, itemLimit }) {
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
 
-  console.log(itemLimit);
-
   return (
     <Table size="md">
       <Thead bg="green.300">
@@ -31,7 +29,7 @@ export default function TodosTable({ curPage, itemLimit }) {
           <Th>Update</Th>
           <Th>Action</Th>
         </Tr>
-      </Thead
+      </Thead>
       <Tbody>
         {
           // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
