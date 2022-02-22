@@ -6,16 +6,16 @@ import { todoState } from '../../hooks/TodoState'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const {id, status, created_day, updated_day, title} = props;
+  const {id, status, created_day, updated_day, title, priority} = props;
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
-  
+
   // 選択されたtodoTaskをゴミ箱に移動するメソッドを宣言
   // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
     // todos内で押下されたTodoのidと等しくないものを抽出し定数に代入
-    const newTodos = todos.filter((todo) => 
+    const newTodos = todos.filter((todo) =>
       todo.id !== todoId
     )
     // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
@@ -33,9 +33,9 @@ const TodoListChild = (props) => {
       </Td>
       <Td>
         <Select borderColor="tomato" fontSize="16px">
-          <option value="High">High</option>
-          <option value="Middle">Middle</option>
-          <option value="Low">Low</option>
+          <option value="High" selected={priority==="High"}>High</option>
+          <option value="Middle" selected={priority==="Middle"}>Middle</option>
+          <option value="Low" selected={priority==="Low"}>Low</option>
         </Select>
       </Td>
       <Td fontSize="14px">{created_day}</Td>

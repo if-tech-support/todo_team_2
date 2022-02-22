@@ -74,6 +74,7 @@ export default function TodosTable({ curPage, itemLimit }) {
                   created_day={todo.created_day}
                   updated_day={todo.updated_day}
                   title={todo.title}
+                  priority={todo.priority}
                 />
               )
             })
@@ -85,6 +86,7 @@ export default function TodosTable({ curPage, itemLimit }) {
                   created_day={todo.created_day}
                   updated_day={todo.updated_day}
                   title={todo.title}
+                  priority={todo.priority}
                 />
               )
             })}
