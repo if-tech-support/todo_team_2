@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
-import Router from 'next/router'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { searchPriorityState } from '../../../hooks/SearchStatus'
 
 export const SearchPriority = () => {
-  const setSelectedPriority = useSetRecoilState(searchPriorityState)
+  const [selectedPriority, setSelectedPriority] =
+    useRecoilState(searchPriorityState)
 
   const onSearchPriority = (e) => {
     setSelectedPriority(e.target.value)
@@ -25,9 +25,9 @@ export const SearchPriority = () => {
         w={48}
         onChange={onSearchPriority}
       >
-        <option>Low</option>
-        <option>Middle</option>
-        <option>High</option>
+        <option selected={selectedPriority === 'Low'}>Low</option>
+        <option selected={selectedPriority === 'Middle'}>Middle</option>
+        <option selected={selectedPriority === 'High'}>High</option>
       </Select>
     </div>
   )

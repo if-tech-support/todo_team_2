@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Select, FormControl, FormLabel } from '@chakra-ui/react'
-import Router from 'next/router'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { searchStatusState } from '../../../hooks/SearchStatus'
 
 const SearchStatus = () => {
-  const setSelectedStatus = useSetRecoilState(searchStatusState)
+  const [selectedStatus, setSelectedStatus] = useRecoilState(searchStatusState)
 
   const onSearchStatus = (e) => {
     setSelectedStatus(e.target.value)
@@ -30,9 +29,9 @@ const SearchStatus = () => {
         borderRadius="10px"
         onChange={onSearchStatus}
       >
-        <option>NOT STARTED</option>
-        <option>DOING</option>
-        <option>DONE</option>
+        <option selected={selectedStatus==="NOT STARTED"}>NOT STARTED</option>
+        <option selected={selectedStatus==="DOING"}>DOING</option>
+        <option selected={selectedStatus==="DONE"}>DONE</option>
       </Select>
     </FormControl>
   )
