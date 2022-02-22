@@ -19,6 +19,7 @@ const TodoPriority = (props) => {
       id, e.target.value
       ),
       [priority])
+      // console.log(priority);
 
   return (
     <>

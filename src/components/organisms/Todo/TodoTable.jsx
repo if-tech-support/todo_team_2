@@ -17,7 +17,9 @@ export default function TodosTable({ curPage, itemLimit }) {
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
 
-  console.log(itemLimit)
+  // console.log(todos.priority);
+
+  // console.log(itemLimit)
 
   return (
     <Table size="md">
@@ -39,6 +41,7 @@ export default function TodosTable({ curPage, itemLimit }) {
               <TodoListChild
                 id={todo.id}
                 status={todo.status}
+                priority={todo.priority}
                 created_day={todo.created_day}
                 updated_day={todo.updated_day}
                 title={todo.title}
