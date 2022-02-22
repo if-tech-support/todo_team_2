@@ -1,53 +1,45 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Select } from '@chakra-ui/react'
-import { useRecoilCallback } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
+import { getTime } from '../../../utils/Now'
 
 const TodoPriority = (props) => {
-  const { id, priority } = props
-  //atomにセレクトボックスで選んだ時の値をsetする
-  const updateTodo = useRecoilCallback(({ set }) =>
-    (id, priority) => {
-      set(todoState, (todoOld) => todoOld.map(
-        todoOld => todoOld.id === id
-        ? { ...todoOld, priority }
-        : todoOld))
-    }
-  )
-  const handleChange = useCallback(
-    (e) => updateTodo(
-      id, e.target.value
-      ),
-      [priority])
-      // console.log(priority);
+  const { id } = props
+  const [todos, setTodos] = useRecoilState(todoState)
+  const { currentTime } = getTime()
+
+  const handleChange = (e) => {
+    const newTodos = todos.map((todo) =>
+      todo.id === id
+        ? {
+            id: todo.id,
+            title: todo.title,
+            detail: todo.detail,
+            priority: e.target.value,
+            status: todo.status,
+            created_day: todo.created_day,
+            updated_day: currentTime,
+          }
+        : todo
+    )
+    setTodos(newTodos)
+  }
 
   return (
     <>
       <Select
-        value={priority}
         id="topSelectBox"
         onChange={handleChange}
         borderColor="tomato"
-        fontSize="16px">
-        <option
-          value="High"
-        >
-          High
-        </option>
-        <option
-          value="Middle"
-        >
-          Middle
-        </option>
-        <option
-          value="Low"
-        >
-          Low
-        </option>
+        fontSize="16px"
+      >
+        <option value="High">High</option>
+        <option value="Middle">Middle</option>
+        <option value="Low">Low</option>
       </Select>
     </>
   )
 }
 
 export default TodoPriority
-
