@@ -49,6 +49,7 @@ export default function NewTodo() {
     return errors
   }
   const onSubmit = () => {
+    
     if (!title || !detail || !priority) {
       // 空欄が一か所でもあれば、validate関数で定義したエラー文を表示し、else以降の処理が行われないようにする
       setFormErrors(validate(title, detail, priority))

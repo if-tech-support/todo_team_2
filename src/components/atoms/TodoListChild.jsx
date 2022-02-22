@@ -6,7 +6,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
 import { editTodoState } from '../../hooks/EditTodoState'
 
-const TodoListChild = () => {
+const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
   const { id, status, created_day, updated_day, title } = props
 
@@ -52,10 +52,11 @@ const TodoListChild = () => {
           <Td fontSize="14px">{todo.updated_day}</Td>
           <Td>
             <EditIcon
-              onClick={(e) => handleClickEdit(todo)}
               w={18}
               h={18}
               me={5}
+              cursor={'pointer'}
+              onClick={(e) => handleClickEdit(todo)}
             />
             {/* Todoをゴミ箱に移動するメソッドを呼び出し */}
             <DeleteIcon
