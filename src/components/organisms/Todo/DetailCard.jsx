@@ -15,6 +15,8 @@ import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 import EditButton from '../../atoms/button/EditButton'
+import '@uiw/react-markdown-preview/markdown.css'
+import MDEditor from '@uiw/react-md-editor'
 
 export default function DetailCard() {
   // 渡されたidを取得するためにuseRouterを使用
@@ -54,7 +56,7 @@ export default function DetailCard() {
           Detail
         </Heading>
         <Box h="100%" overflow="scroll">
-          <Text fontSize="lg">{todoDetail.detail}</Text>
+          <MDEditor.Markdown source={todoDetail.detail} />
         </Box>
       </Box>
       <Spacer />
