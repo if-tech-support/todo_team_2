@@ -16,8 +16,10 @@ export default function TodosTable({ curPage, itemLimit }) {
   // 表示中のtodo数を監視するstateを定義
   const [curItems, setCurItems] = useState([])
 
+  // 選択されたpriorityとstatusの値を管理するstateを呼び出し
   const selectedPriority = useRecoilValue(searchPriorityState)
   const selectedStatus = useRecoilValue(searchStatusState)
+  // 検索結果の表示か通常の一覧表示かを判定するstateを定義
   const [isSearched, setIsSearched] = useState(false)
 
   // 条件に合うtodoの配列を格納するstateを定義
@@ -48,6 +50,7 @@ export default function TodosTable({ curPage, itemLimit }) {
     }
   }, [selectedPriority, selectedStatus])
 
+  console.log(curItems)
 
   return (
     <Table size="md">
