@@ -3,7 +3,6 @@ import { Table, Tbody, Thead, Th, Tr } from '@chakra-ui/react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 import TodoListChild from '../../atoms/TodoListChild'
-import { useRouter } from 'next/router'
 import {
   searchPriorityState,
   searchStatusState,
