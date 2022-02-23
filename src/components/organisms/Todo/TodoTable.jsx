@@ -17,8 +17,6 @@ export default function TodosTable({ curPage, itemLimit }) {
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
 
-  console.log(itemLimit)
-
   return (
     <Table size="md">
       <Thead bg="green.300">
