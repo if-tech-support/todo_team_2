@@ -1,25 +1,19 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Select } from '@chakra-ui/react'
-import { useRecoilCallback } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 
 const TodoPriority = (props) => {
   const { id, priority } = props
-  //atomにセレクトボックスで選んだ時の値をsetする
-  const updateTodo = useRecoilCallback(({ set }) =>
-    (id, priority) => {
-      set(todoState, (todoOld) => todoOld.map(
-        todoOld => todoOld.id === id
-        ? { ...todoOld, priority }
-        : todoOld))
-    }
+
+  const [todos, setTodos] = useRecoilState(todoState)
+
+  const handleChange = (e) => {
+  const newTodos = [...todos].map((todo) =>
+  todo.id === id ? { ...todo, priority: e.target.value } : todo
   )
-  const handleChange = useCallback(
-    (e) => updateTodo(
-      id, e.target.value
-      ),
-      [priority])
-      // console.log(priority);
+  setTodos(() => newTodos)
+  }
 
   return (
     <>
@@ -50,4 +44,3 @@ const TodoPriority = (props) => {
 }
 
 export default TodoPriority
-
