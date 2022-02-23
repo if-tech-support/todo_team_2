@@ -15,7 +15,7 @@ export default function TodosTable({ curPage, itemLimit }) {
   useEffect(() => {
     const offset = curPage * itemLimit
     setCurItems(todos.slice(offset, offset + itemLimit))
-  }, [curPage, todos.length])
+  }, [curPage, todos])
 
   console.log(itemLimit)
 
@@ -42,6 +42,8 @@ export default function TodosTable({ curPage, itemLimit }) {
                 created_day={todo.created_day}
                 updated_day={todo.updated_day}
                 title={todo.title}
+                index={index}
+                key={todo.id}
               />
             )
           })

@@ -8,7 +8,7 @@ import TodoPriority from './status/TodoPriority'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title, todo } = props
+  const { id, status, created_day, updated_day, title, index } = props
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
@@ -23,7 +23,7 @@ const TodoListChild = (props) => {
   }
 
   // ステータスボタンをクリックしたら、Statusが変わります
-  const handleTodoStatus = () => {
+  const handleTodoStatus = (index) => {
     const switchTodoStatus = JSON.parse(JSON.stringify(todos))
     if (switchTodoStatus[index].status === 'NOT STARTED') {
       switchTodoStatus[index].status = 'DOING'
@@ -60,23 +60,19 @@ const TodoListChild = (props) => {
     <Tr key={id}>
       <Td fontSize="16px" fontWeight="bold">
         {title}
-        {/* <TodoStatus status={todo.status} /> */}
       </Td>
       <Td>
-        {/* <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
-          {status}
-        </Button> */}
-        {/* <Button
+        <Button
           rounded="full"
-          bg={bgColor(todo.status)}
-          color={textColor(todo.status)}
+          bg={bgColor(status)}
+          color={textColor(status)}
           size="lg"
           fontSize="12px"
           _hover={{ opacity: 0.8 }}
           onClick={() => handleTodoStatus(index)}
         >
           {status}
-        </Button> */}
+        </Button>
       </Td>
       <Td>
         <Select borderColor="tomato" fontSize="16px">
