@@ -28,9 +28,7 @@ function ShowTodo() {
         </Flex>
         <HStack spacing={1}>
           <DetailCard />
-          {/* <Stack pb="5" h="480" w="xl"> */}
           <Comment />
-          {/* </Stack> */}
         </HStack>
         {/* ここにページネーションが入ります */}
       </Container>
