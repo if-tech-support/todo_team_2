@@ -8,7 +8,7 @@ import TodoPriority from './status/TodoPriority'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title, todo } = props
+  const { id, status, priority, created_day, updated_day, title, todo } = props
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
@@ -78,16 +78,16 @@ const TodoListChild = (props) => {
           {status}
         </Button> */}
       </Td>
-      <Td>
+      {/* <Td>
         <Select borderColor="tomato" fontSize="16px">
           <option value="High">High</option>
           <option value="Middle">Middle</option>
           <option value="Low">Low</option>
         </Select>
+      </Td> */}
+      <Td>
+          <TodoPriority id={id} priority={priority} />
       </Td>
-      {/* <Td>
-            <TodoPriority id={todo.id} priority={todo.priority} />
-          </Td> */}
       <Td fontSize="14px">{created_day}</Td>
       <Td fontSize="14px">{updated_day}</Td>
       <Td>

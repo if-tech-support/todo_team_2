@@ -12,12 +12,12 @@ export default function TodosTable({ curPage, itemLimit }) {
   const [curItems, setCurItems] = useState([])
 
   // itemLimit数に応じた新しいtodo配列を生成し、curItemsにセット
+  //一覧ページでpriorityとstatusのstateを監視するため第二引数をtodos.length　→ todosにした
+
   useEffect(() => {
     const offset = curPage * itemLimit
     setCurItems(todos.slice(offset, offset + itemLimit))
-  }, [curPage, todos.length])
-
-  console.log(itemLimit)
+    }, [curPage, todos])
 
   return (
     <Table size="md">
@@ -39,6 +39,7 @@ export default function TodosTable({ curPage, itemLimit }) {
               <TodoListChild
                 id={todo.id}
                 status={todo.status}
+                priority={todo.priority}
                 created_day={todo.created_day}
                 updated_day={todo.updated_day}
                 title={todo.title}
