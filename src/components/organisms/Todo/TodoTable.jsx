@@ -12,14 +12,12 @@ export default function TodosTable({ curPage, itemLimit }) {
   const [curItems, setCurItems] = useState([])
 
   // itemLimit数に応じた新しいtodo配列を生成し、curItemsにセット
+  //一覧ページでpriorityとstatusのstateを監視するため第二引数をtodos.length　→ todosにした
+
   useEffect(() => {
     const offset = curPage * itemLimit
     setCurItems(todos.slice(offset, offset + itemLimit))
-  }, [curPage, todos.length])
-
-  // console.log(todos.priority);
-
-  // console.log(itemLimit)
+    }, [curPage, todos])
 
   return (
     <Table size="md">
