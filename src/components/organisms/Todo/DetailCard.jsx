@@ -15,8 +15,12 @@ import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 import EditButton from '../../atoms/button/EditButton'
+import dynamic from 'next/dynamic'
 import '@uiw/react-markdown-preview/markdown.css'
-import MDEditor from '@uiw/react-md-editor'
+const MarkdownPreview = dynamic(
+  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
+  { ssr: false }
+)
 
 export default function DetailCard() {
   // 渡されたidを取得するためにuseRouterを使用
@@ -56,7 +60,7 @@ export default function DetailCard() {
           Detail
         </Heading>
         <Box h="100%" overflow="scroll">
-          <MDEditor.Markdown source={todoDetail.detail} />
+          <MarkdownPreview source={todoDetail.detail} />
         </Box>
       </Box>
       <Spacer />
