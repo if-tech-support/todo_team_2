@@ -32,7 +32,7 @@ export default function TodosTable({ curPage, itemLimit }) {
       <Tbody>
         {
           // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
-          curItems.map((todo, index) => {
+          curItems.map((todo) => {
             return (
               <TodoListChild
                 id={todo.id}
