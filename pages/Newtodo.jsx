@@ -16,7 +16,7 @@ import { getTime } from '../src/utils/Now'
 
 export default function NewTodo() {
   // TodoState.jsで定義したtosos,setTodosを呼び出し
-  const [todos, setTodos] = useRecoilState(todoState);
+  const [todos, setTodos] = useRecoilState(todoState)
 
   // Now.jsで定義したcurerntTimeを呼び出し
   const { currentTime } = getTime()
@@ -49,6 +49,7 @@ export default function NewTodo() {
     return errors
   }
   const onSubmit = () => {
+    
     if (!title || !detail || !priority) {
       // 空欄が一か所でもあれば、validate関数で定義したエラー文を表示し、else以降の処理が行われないようにする
       setFormErrors(validate(title, detail, priority))

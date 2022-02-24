@@ -1,25 +1,27 @@
-import { Stat, StatLabel, StatNumber } from '@chakra-ui/react';
-import React from 'react';
+import { Stat, StatLabel, StatNumber, Text } from '@chakra-ui/react'
+import React from 'react'
 
-export const UpdateTime = () => {
+export const UpdateTime = (props) => {
+  const { updated_day } = props
+
   return (
     <Stat>
-    <StatLabel
+      <StatLabel
         fontSize="16px"
         lineHeight="1.1"
         fontWeight="medium"
         color="gray.800"
-    >
+      >
         Updated
-    </StatLabel>
-    <StatNumber
+      </StatLabel>
+      <StatNumber
         fontSize="18px"
         lineHeight="1.1"
         fontWeight="medium"
         color="gray.800"
-    >
-        2022-01-01&nbsp;&nbsp;18:55
-    </StatNumber>
-</Stat>
-  );
-};
+      >
+        <Text>{updated_day}</Text>
+      </StatNumber>
+    </Stat>
+  )
+}
