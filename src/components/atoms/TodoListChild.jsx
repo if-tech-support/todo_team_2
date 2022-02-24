@@ -23,14 +23,18 @@ const TodoListChild = (props) => {
   }
 
   // ステータスボタンをクリックしたら、Statusが変わります
-  const handleTodoStatus = () => {
+  const handleTodoStatus = (id) => {
     const switchTodoStatus = JSON.parse(JSON.stringify(todos))
-    if (switchTodoStatus[index].status === 'NOT STARTED') {
-      switchTodoStatus[index].status = 'DOING'
-    } else if (switchTodoStatus[index].status === 'DOING') {
-      switchTodoStatus[index].status = 'DONE'
-    } else if (switchTodoStatus[index].status === 'DONE') {
-      switchTodoStatus[index].status = 'NOT STARTED'
+
+    // findIndexでtodoのidがhandleTodoStatusに渡したidと一致するか探す
+    const calculatedId = todos.findIndex((todo) => todo.id === id)
+
+    if (switchTodoStatus[calculatedId].status === 'NOT STARTED') {
+      switchTodoStatus[calculatedId].status = 'DOING'
+    } else if (switchTodoStatus[calculatedId].status === 'DOING') {
+      switchTodoStatus[calculatedId].status = 'DONE'
+    } else if (switchTodoStatus[calculatedId].status === 'DONE') {
+      switchTodoStatus[calculatedId].status = 'NOT STARTED'
     }
     setTodos(switchTodoStatus)
   }
@@ -60,23 +64,19 @@ const TodoListChild = (props) => {
     <Tr key={id}>
       <Td fontSize="16px" fontWeight="bold">
         {title}
-        {/* <TodoStatus status={todo.status} /> */}
       </Td>
       <Td>
-        {/* <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
-          {status}
-        </Button> */}
-        {/* <Button
+        <Button
           rounded="full"
-          bg={bgColor(todo.status)}
-          color={textColor(todo.status)}
+          bg={bgColor(status)}
+          color={textColor(status)}
           size="lg"
           fontSize="12px"
           _hover={{ opacity: 0.8 }}
-          onClick={() => handleTodoStatus(index)}
+          onClick={() => handleTodoStatus(id)}
         >
           {status}
-        </Button> */}
+        </Button>
       </Td>
       {/* <Td>
         <Select borderColor="tomato" fontSize="16px">
@@ -86,7 +86,7 @@ const TodoListChild = (props) => {
         </Select>
       </Td> */}
       <Td>
-          <TodoPriority id={id} priority={priority} />
+        <TodoPriority id={id} priority={priority} />
       </Td>
       <Td fontSize="14px">{created_day}</Td>
       <Td fontSize="14px">{updated_day}</Td>
