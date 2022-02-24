@@ -17,7 +17,7 @@ export default function TodosTable({ curPage, itemLimit }) {
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos])
 
-  console.log(itemLimit)
+  // console.log(itemLimit)
 
   return (
     <Table size="md">
@@ -34,7 +34,7 @@ export default function TodosTable({ curPage, itemLimit }) {
       <Tbody>
         {
           // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
-          curItems.map((todo, index) => {
+          curItems.map((todo) => {
             return (
               <TodoListChild
                 id={todo.id}
@@ -42,7 +42,6 @@ export default function TodosTable({ curPage, itemLimit }) {
                 created_day={todo.created_day}
                 updated_day={todo.updated_day}
                 title={todo.title}
-                index={index}
                 key={todo.id}
               />
             )

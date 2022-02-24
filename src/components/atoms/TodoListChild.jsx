@@ -8,7 +8,7 @@ import TodoPriority from './status/TodoPriority'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title, index } = props
+  const { id, status, created_day, updated_day, title } = props
 
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
@@ -23,14 +23,18 @@ const TodoListChild = (props) => {
   }
 
   // ステータスボタンをクリックしたら、Statusが変わります
-  const handleTodoStatus = (index) => {
+  const handleTodoStatus = (id) => {
     const switchTodoStatus = JSON.parse(JSON.stringify(todos))
-    if (switchTodoStatus[index].status === 'NOT STARTED') {
-      switchTodoStatus[index].status = 'DOING'
-    } else if (switchTodoStatus[index].status === 'DOING') {
-      switchTodoStatus[index].status = 'DONE'
-    } else if (switchTodoStatus[index].status === 'DONE') {
-      switchTodoStatus[index].status = 'NOT STARTED'
+
+    // findIndexでtodoのidがhandleTodoStatusに渡したidと一致するか探す
+    const calculatedId = todos.findIndex((todo) => todo.id === id)
+
+    if (switchTodoStatus[calculatedId].status === 'NOT STARTED') {
+      switchTodoStatus[calculatedId].status = 'DOING'
+    } else if (switchTodoStatus[calculatedId].status === 'DOING') {
+      switchTodoStatus[calculatedId].status = 'DONE'
+    } else if (switchTodoStatus[calculatedId].status === 'DONE') {
+      switchTodoStatus[calculatedId].status = 'NOT STARTED'
     }
     setTodos(switchTodoStatus)
   }
@@ -69,7 +73,7 @@ const TodoListChild = (props) => {
           size="lg"
           fontSize="12px"
           _hover={{ opacity: 0.8 }}
-          onClick={() => handleTodoStatus(index)}
+          onClick={() => handleTodoStatus(id)}
         >
           {status}
         </Button>
