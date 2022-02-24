@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { editTodoState } from '../../../hooks/EditTodoState'
 import { todoState } from '../../../hooks/TodoState'
 import { getTime } from '../../../utils/Now'
@@ -14,7 +14,7 @@ export const UpdateButton = (props) => {
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
   // errorState.jsで定義したerrorStateを呼び出し
-  const [formErrors, setFormErrors] = useRecoilState(errorState)
+  const setFormErrors = useSetRecoilState(errorState)
 
   // タイトル欄、詳細欄、ラジオボタンの下に表示させるエラー文を定義
   const validate = (title, detail) => {
@@ -53,8 +53,6 @@ export const UpdateButton = (props) => {
       })
       // 編集した内容を、todosに更新。
       setTodos(upTodos)
-      // editTodoを初期化
-      setEditTodo({})
       // errorStateを初期化
       setFormErrors({})
 
