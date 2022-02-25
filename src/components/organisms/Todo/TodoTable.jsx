@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 import TodoListChild from '../../atoms/TodoListChild'
 
-export default function TodosTable({ curPage, itemLimit }) {
+export default function TodoTable({ curPage, itemLimit }) {
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
 
@@ -16,6 +16,7 @@ export default function TodosTable({ curPage, itemLimit }) {
     const offset = curPage * itemLimit
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
+
   return (
     <Table size="md">
       <Thead bg="green.300">
@@ -39,6 +40,7 @@ export default function TodosTable({ curPage, itemLimit }) {
                 created_day={todo.created_day}
                 updated_day={todo.updated_day}
                 title={todo.title}
+                todo={todo}
               />
             )
           })

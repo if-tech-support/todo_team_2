@@ -17,6 +17,7 @@ import { todoState } from '../../../hooks/TodoState'
 import EditButton from '../../atoms/button/EditButton'
 import dynamic from 'next/dynamic'
 import '@uiw/react-markdown-preview/markdown.css'
+
 const MarkdownPreview = dynamic(
   () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
   { ssr: false }

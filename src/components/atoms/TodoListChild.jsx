@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { Tbody, Tr, Td, Button, Select } from '@chakra-ui/react'
+import { Tr, Td, Button, Select } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
@@ -8,7 +8,7 @@ import { editTodoState } from '../../hooks/EditTodoState'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title } = props
+  const { id, status, created_day, updated_day, title, todo } = props
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
   // 必要な情報を持って画面遷移するためにuseRouterを使用
@@ -31,53 +31,49 @@ const TodoListChild = (props) => {
   }
 
   return (
-    <Tbody>
-      {todos.map((todo) => (
-        <Tr key={id}>
-          <Td
-            fontSize="16px"
-            fontWeight="bold"
-            cursor={'pointer'}
-            onClick={router.push({
-              pathname: 'ShowTodo',
-              query: { id: id },
-            })}
-          >
-            {title}
-          </Td>
-          <Td>
-            <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
-              {status}
-            </Button>
-          </Td>
-          <Td>
-            <Select borderColor="tomato" fontSize="16px">
-              <option>High</option>
-              <option>Middle</option>
-              <option>Low</option>
-            </Select>
-          </Td>
-          <Td fontSize="14px">{todo.created_day}</Td>
-          <Td fontSize="14px">{todo.updated_day}</Td>
-          <Td>
-            <EditIcon
-              w={18}
-              h={18}
-              me={5}
-              cursor={'pointer'}
-              onClick={(e) => handleClickEdit(todo)}
-            />
-            {/* Todoをゴミ箱に移動するメソッドを呼び出し */}
-            <DeleteIcon
-              w={18}
-              h={18}
-              cursor={'pointer'}
-              onClick={() => onClickTrash(id)}
-            />
-          </Td>
-        </Tr>
-      ))}
-    </Tbody>
+    <Tr key={id}>
+      <Td
+        fontSize="16px"
+        fontWeight="bold"
+        cursor={'pointer'}
+        onClick={router.push({
+          pathname: 'ShowTodo',
+          query: { id: id },
+        })}
+      >
+        {title}
+      </Td>
+      <Td>
+        <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
+          {status}
+        </Button>
+      </Td>
+      <Td>
+        <Select borderColor="tomato" fontSize="16px">
+          <option>High</option>
+          <option>Middle</option>
+          <option>Low</option>
+        </Select>
+      </Td>
+      <Td fontSize="14px">{created_day}</Td>
+      <Td fontSize="14px">{updated_day}</Td>
+      <Td>
+        <EditIcon
+          w={18}
+          h={18}
+          me={5}
+          cursor={'pointer'}
+          onClick={() => handleClickEdit(todo)}
+        />
+        {/* Todoをゴミ箱に移動するメソッドを呼び出し */}
+        <DeleteIcon
+          w={18}
+          h={18}
+          cursor={'pointer'}
+          onClick={() => onClickTrash(id)}
+        />
+      </Td>
+    </Tr>
   )
 }
 
