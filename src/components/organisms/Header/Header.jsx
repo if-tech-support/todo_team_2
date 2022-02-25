@@ -1,14 +1,12 @@
-import { Box, Container, Flex, Heading, Spacer, Text } from '@chakra-ui/layout'
+import { Box, Container, Heading } from '@chakra-ui/layout'
 
 const Header = () => {
   return (
     <Box bg={'green.300'}>
       <Container maxW="container.xl">
-        <Flex py="12px" alignItems="center">
+        <Box py="12px">
           <Heading fontSize="5xl">TODO</Heading>
-          <Spacer />
-          <Text>2022/01/01</Text>
-        </Flex>
+        </Box>
       </Container>
     </Box>
   )

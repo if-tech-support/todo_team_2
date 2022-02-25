@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Box, Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
-import MainButtons from '../src/components/molecules/MainButtons'
+import MainCreateButton from '../src/components/atoms/button/MainCreateButton'
 import Header from '../src/components/organisms/Header/Header'
 import SearchForm from '../src/components/atoms/search/SearchForm'
 import SearchStatus from '../src/components/atoms/search/SearchStatus'
@@ -38,8 +38,8 @@ export default function Home() {
             <ResetButton />
           </HStack>
           <Spacer />
-          <Box w="150px">
-            <MainButtons />
+          <Box display="flex" justifyContent="right">
+            <MainCreateButton />
           </Box>
         </Flex>
         <TodoTable curPage={curPage} itemLimit={itemLimit} />

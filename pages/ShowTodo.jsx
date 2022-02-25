@@ -14,11 +14,9 @@ function ShowTodo() {
       <Header />
       <Container maxW="container.lg">
         <Flex py="12px">
-          {/* 以下には現在プルリク中のHeadline.jsxが入ります*/}
           <Heading as="h3" size="lg">
             SHOW TODO
           </Heading>
-          {/* 以上には現在プルリク中のHeadline.jsxが入ります*/}
           <Spacer />
           <Flex width="25%">
             <CommentModal />
@@ -30,7 +28,6 @@ function ShowTodo() {
           <DetailCard />
           <Comment />
         </HStack>
-        {/* ここにページネーションが入ります */}
       </Container>
     </>
   )

@@ -14,7 +14,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
-import EditButton from '../../atoms/button/EditButton'
 import dynamic from 'next/dynamic'
 import '@uiw/react-markdown-preview/markdown.css'
 
@@ -67,16 +66,12 @@ export default function DetailCard() {
       <Spacer />
       <Flex pt={3} w="full">
         <Flex justifyContent="flex-end" w="full" p={4}>
-          <Box>
-            <EditButton />
-          </Box>
-          ‌ <Spacer />
           <Stat whiteSpace="nowrap">
             <StatLabel fontSize="sm">Updated at</StatLabel>
             <StatNumber fontSize="md">{todoDetail.updated_day}</StatNumber>
           </Stat>
           <Spacer />
-          <Stat whiteSpace="nowrap">
+          <Stat whiteSpace="nowrap" display="flex" justifyContent="right">
             <StatLabel fontSize="sm">Created at</StatLabel>
             <StatNumber fontSize="md">{todoDetail.created_day}</StatNumber>
           </Stat>

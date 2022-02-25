@@ -6,7 +6,6 @@ import { Stack, Text, Box, Flex, Spacer, HStack } from '@chakra-ui/react'
 import BackButton from '../src/components/atoms/button/BackButton'
 import Markdown from '../src/components/molecules/Markdown'
 import Title from '../src/components/atoms/input/Title'
-import { DraftButton } from '../src/components/atoms/button/DraftButton'
 import { CreateButton } from '../src/components/atoms/button/CreateButton'
 import RadioPriority from '../src/components/atoms/input/RadioPriority'
 import Header from '../src/components/organisms/Header/Header'
@@ -91,7 +90,6 @@ export default function NewTodo() {
           <Text color="red">{formErrors.priority}</Text>
           <Flex>
             <HStack spacing="24px" pos="absolute" right="20">
-              <DraftButton />
               <CreateButton onSubmit={onSubmit} />
             </HStack>
           </Flex>
