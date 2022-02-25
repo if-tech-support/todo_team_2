@@ -46,7 +46,6 @@ export default function DetailCard() {
       borderColor="blackAlpha.800"
       mr="2"
       h="480"
-      w="xl"
       spacing={2}
     >
       <Box w="full">

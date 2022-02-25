@@ -2,13 +2,22 @@ import { useState } from 'react'
 import Router from 'next/router'
 import { useRecoilState } from 'recoil'
 
-import { Stack, Text, Box, Flex, Spacer, HStack } from '@chakra-ui/react'
+import {
+  Stack,
+  Text,
+  Box,
+  Container,
+  Flex,
+  Spacer,
+  HStack,
+} from '@chakra-ui/react'
 import BackButton from '../src/components/atoms/button/BackButton'
 import Markdown from '../src/components/molecules/Markdown'
 import Title from '../src/components/atoms/input/Title'
 import { CreateButton } from '../src/components/atoms/button/CreateButton'
 import RadioPriority from '../src/components/atoms/input/RadioPriority'
 import Header from '../src/components/organisms/Header/Header'
+import { Headline } from '../src/components/atoms/headline/Headline'
 
 import { todoState } from '../src/hooks/TodoState'
 import { getTime } from '../src/utils/Now'
@@ -73,12 +82,10 @@ export default function NewTodo() {
   return (
     <>
       <Header />
-      <Box p={10} mr={10} ml={10} height="100vh">
+      <Container maxW="container.xl" height="100vh" py="12px">
         <Stack spacing={3}>
           <Flex>
-            <Text fontSize="2xl" fontWeight="semibold">
-              NEW TODO
-            </Text>
+            <Headline title="NEW TODO" />
             <Spacer />
             <BackButton />
           </Flex>
@@ -94,7 +101,7 @@ export default function NewTodo() {
             </HStack>
           </Flex>
         </Stack>
-      </Box>
+      </Container>
     </>
   )
 }

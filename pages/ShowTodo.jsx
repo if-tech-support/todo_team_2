@@ -1,22 +1,21 @@
 import React from 'react'
 
-import { Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
+import { Box, Container, Flex, Spacer } from '@chakra-ui/react'
 
 import Header from '../src/components/organisms/Header/Header'
 import DetailCard from '../src/components/organisms/Todo/DetailCard'
 import BackButton from '../src/components/atoms/button/BackButton'
 import { Comment } from '../src/components/atoms/comment/Comment'
 import { CommentModal } from '../src/components/organisms/Modal/CommentModal'
+import { Headline } from '../src/components/atoms/headline/Headline'
 
 function ShowTodo() {
   return (
     <>
       <Header />
-      <Container maxW="container.lg">
+      <Container maxW="container.xl" height="100vh">
         <Flex py="12px">
-          <Heading as="h3" size="lg">
-            SHOW TODO
-          </Heading>
+          <Headline title="SHOW TODO" />
           <Spacer />
           <Flex width="25%">
             <CommentModal />
@@ -24,10 +23,16 @@ function ShowTodo() {
             <BackButton />
           </Flex>
         </Flex>
-        <HStack spacing={1}>
-          <DetailCard />
-          <Comment />
-        </HStack>
+        <Flex>
+          <Box width="50%">
+            <DetailCard />
+          </Box>
+          <Spacer />
+          {/* overfllow="auto"ではみ出た部分をスクロールで表示 */}
+          <Box width="50%" h={480} overflow="auto">
+            <Comment />
+          </Box>
+        </Flex>
       </Container>
     </>
   )
