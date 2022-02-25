@@ -30,16 +30,20 @@ const TodoListChild = (props) => {
     router.push('/EditTodo')
   }
 
+  const handleClickDetail = () => {
+    router.push({
+      pathname: 'ShowTodo',
+      query: { id: id },
+    })
+  }
+
   return (
     <Tr key={id}>
       <Td
         fontSize="16px"
         fontWeight="bold"
         cursor={'pointer'}
-        onClick={router.push({
-          pathname: 'ShowTodo',
-          query: { id: id },
-        })}
+        onClick={handleClickDetail}
       >
         {title}
       </Td>
