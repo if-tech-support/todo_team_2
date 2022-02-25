@@ -33,13 +33,21 @@ const TodoListChild = (props) => {
   return (
     <Tbody>
       {todos.map((todo) => (
-        <Tr key={todo.id}>
-          <Td fontSize="16px" fontWeight="bold">
-            {todo.title}
+        <Tr key={id}>
+          <Td
+            fontSize="16px"
+            fontWeight="bold"
+            cursor={'pointer'}
+            onClick={router.push({
+              pathname: 'ShowTodo',
+              query: { id: id },
+            })}
+          >
+            {title}
           </Td>
           <Td>
             <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
-              {todo.status}
+              {status}
             </Button>
           </Td>
           <Td>
