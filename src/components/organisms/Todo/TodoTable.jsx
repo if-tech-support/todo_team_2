@@ -8,7 +8,7 @@ import {
   searchStatusState,
 } from '../../../hooks/SearchStatus'
 
-export default function TodosTable({ curPage, itemLimit }) {
+export default function TodoTable({ curPage, itemLimit }) {
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
 
@@ -49,8 +49,6 @@ export default function TodosTable({ curPage, itemLimit }) {
     }
   }, [selectedPriority, selectedStatus])
 
-  console.log(curItems)
-
   return (
     <Table size="md">
       <Thead bg="green.300">
@@ -87,6 +85,7 @@ export default function TodosTable({ curPage, itemLimit }) {
                   updated_day={todo.updated_day}
                   title={todo.title}
                   priority={todo.priority}
+                  todo={todo}
                 />
               )
             })}
