@@ -9,9 +9,36 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+import { todoState } from '../../../hooks/TodoState'
 import EditButton from '../../atoms/button/EditButton'
+import dynamic from 'next/dynamic'
+import '@uiw/react-markdown-preview/markdown.css'
+
+const MarkdownPreview = dynamic(
+  () => import('@uiw/react-markdown-preview').then((mod) => mod.default),
+  { ssr: false }
+)
 
 export default function DetailCard() {
+  // 渡されたidを取得するためにuseRouterを使用
+  const router = useRouter()
+  // 現存するtodosを呼び出し
+  const todos = useRecoilValue(todoState)
+  // 詳細情報を保持するstateを設定
+  const [todoDetail, setTodoDetail] = useState({})
+  // idが渡されたidと最初に一致したtodoを取得し、idが渡されていなければ一覧画面に遷移する
+  useEffect(() => {
+    if (router.query.id) {
+      setTodoDetail(todos.find((todo) => todo.id === router.query.id))
+    } else {
+      router.push('/')
+    }
+  }, [])
+
   return (
     <VStack
       p={3}
@@ -27,14 +54,14 @@ export default function DetailCard() {
         <Heading as="h2" size="md" bg="green.300" px={3} my={1}>
           Title
         </Heading>
-        <Text fontSize="lg">Text</Text>
+        <Text fontSize="lg">{todoDetail.title}</Text>
       </Box>
       <Box w="full" h="full" minHeight={0}>
         <Heading as="h2" size="md" bg="green.300" px={3} my={1}>
           Detail
         </Heading>
         <Box h="100%" overflow="scroll">
-          <Text fontSize="lg">Text</Text>
+          <MarkdownPreview source={todoDetail.detail} />
         </Box>
       </Box>
       <Spacer />
@@ -44,14 +71,14 @@ export default function DetailCard() {
             <EditButton />
           </Box>
           ‌ <Spacer />
-          <Stat>
+          <Stat whiteSpace="nowrap">
             <StatLabel fontSize="sm">Updated at</StatLabel>
-            <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
+            <StatNumber fontSize="md">{todoDetail.updated_day}</StatNumber>
           </Stat>
           <Spacer />
-          <Stat>
+          <Stat whiteSpace="nowrap">
             <StatLabel fontSize="sm">Created at</StatLabel>
-            <StatNumber fontSize="md">2022-01-01 18:55</StatNumber>
+            <StatNumber fontSize="md">{todoDetail.created_day}</StatNumber>
           </Stat>
         </Flex>
       </Flex>
