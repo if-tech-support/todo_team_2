@@ -8,7 +8,7 @@ import { editTodoState } from '../../hooks/EditTodoState'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title, todo } = props
+  const { id, status, created_day, updated_day, title, todo, priority } = props
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
   // 必要な情報を持って画面遷移するためにuseRouterを使用

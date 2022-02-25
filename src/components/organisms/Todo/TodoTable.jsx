@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { todoState } from '../../../hooks/TodoState'
 import TodoListChild from '../../atoms/TodoListChild'
 import {
+  searchFormState,
   searchPriorityState,
   searchStatusState,
 } from '../../../hooks/SearchStatus'
@@ -18,6 +19,7 @@ export default function TodoTable({ curPage, itemLimit }) {
   // 選択されたpriorityとstatusの値を管理するstateを呼び出し
   const selectedPriority = useRecoilValue(searchPriorityState)
   const selectedStatus = useRecoilValue(searchStatusState)
+  const inputValue = useRecoilValue(searchFormState)
   // 検索結果の表示か通常の一覧表示かを判定するstateを定義
   const [isSearched, setIsSearched] = useState(false)
 
@@ -44,10 +46,16 @@ export default function TodoTable({ curPage, itemLimit }) {
         (todo) => todo.status === selectedStatus
       )
       setSelectedItems(searchStatusItems)
+    } else if (inputValue) {
+      setIsSearched(true)
+      const searchStatusItems = todos.filter(
+        (todo) => todo.title.indexOf(inputValue) !== -1
+      )
+      setSelectedItems(searchStatusItems)
     } else {
       setIsSearched(false)
     }
-  }, [selectedPriority, selectedStatus])
+  }, [selectedPriority, selectedStatus, inputValue])
 
   return (
     <Table size="md">
@@ -64,7 +72,7 @@ export default function TodoTable({ curPage, itemLimit }) {
       <Tbody>
         {isSearched
           ? // useRecoilValueで呼び出したtodos内のtodoを順に取り出し処理を行う。
-            selectedItems.map((todo, index) => {
+            selectedItems.map((todo) => {
               return (
                 <TodoListChild
                   id={todo.id}
@@ -73,6 +81,7 @@ export default function TodoTable({ curPage, itemLimit }) {
                   updated_day={todo.updated_day}
                   title={todo.title}
                   priority={todo.priority}
+                  todo={todo}
                 />
               )
             })

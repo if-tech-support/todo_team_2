@@ -2,6 +2,7 @@ import { Button } from '@chakra-ui/button'
 import React from 'react'
 import { useSetRecoilState } from 'recoil'
 import {
+  searchFormState,
   searchPriorityState,
   searchStatusState,
 } from '../../../hooks/SearchStatus'
@@ -9,12 +10,12 @@ import {
 export const ResetButton = () => {
   const setSearchPriority = useSetRecoilState(searchPriorityState)
   const setSearchStatus = useSetRecoilState(searchStatusState)
-  // const setIsSelected = useSetRecoilState(isSelectedState)
+  const setInputValue = useSetRecoilState(searchFormState)
 
   const onClickReset = () => {
     setSearchPriority('')
     setSearchStatus('')
-    // setIsSelected("")
+    setInputValue('')
   }
 
   return (

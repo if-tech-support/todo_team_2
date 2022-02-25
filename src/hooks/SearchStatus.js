@@ -17,3 +17,10 @@ export const searchStatusState = atom({
 //  effects_UNSTABLE: [persistAtom],
 })
 
+export const searchFormState = atom({
+  key: 'searchForm',
+  default: "",
+  // 状態を永続化
+//  effects_UNSTABLE: [persistAtom],
+})
+
