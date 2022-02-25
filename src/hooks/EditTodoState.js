@@ -3,10 +3,10 @@ import { recoilPersist } from 'recoil-persist'
 
 const { persistAtom } = recoilPersist()
 
-// TODOリストの状態を保持する Atoms を作成
-export const todoState = atom({
-  key: 'todos',
-  default: [],
+// 編集したいTodoの状態を保持するAtoms を作成
+export const editTodoState = atom({
+  key: 'editTodo',
+  default: {},
   // 状態を永続化
   effects_UNSTABLE: [persistAtom],
 })

@@ -16,7 +16,7 @@ import { getTime } from '../src/utils/Now'
 
 export default function NewTodo() {
   // TodoState.jsで定義したtosos,setTodosを呼び出し
-  const [todos, setTodos] = useRecoilState(todoState);
+  const [todos, setTodos] = useRecoilState(todoState)
 
   // Now.jsで定義したcurerntTimeを呼び出し
   const { currentTime } = getTime()
