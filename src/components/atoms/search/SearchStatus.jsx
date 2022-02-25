@@ -4,8 +4,9 @@ import { useRecoilState } from 'recoil'
 import { searchStatusState } from '../../../hooks/SearchStatus'
 
 const SearchStatus = () => {
+  // selectボックスの値のstateとset関数をrecoilで呼び出し
   const [selectedStatus, setSelectedStatus] = useRecoilState(searchStatusState)
-
+  // 選択された値でstateを更新する
   const onSearchStatus = (e) => {
     setSelectedStatus(e.target.value)
   }
@@ -29,9 +30,9 @@ const SearchStatus = () => {
         borderRadius="10px"
         onChange={onSearchStatus}
       >
-        <option selected={selectedStatus==="NOT STARTED"}>NOT STARTED</option>
-        <option selected={selectedStatus==="DOING"}>DOING</option>
-        <option selected={selectedStatus==="DONE"}>DONE</option>
+        <option selected={selectedStatus === 'NOT STARTED'}>NOT STARTED</option>
+        <option selected={selectedStatus === 'DOING'}>DOING</option>
+        <option selected={selectedStatus === 'DONE'}>DONE</option>
       </Select>
     </FormControl>
   )

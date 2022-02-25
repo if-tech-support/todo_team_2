@@ -8,10 +8,12 @@ import {
 } from '../../../hooks/SearchStatus'
 
 export const ResetButton = () => {
+  // 検索に関連するstateを呼び出し
   const setSearchPriority = useSetRecoilState(searchPriorityState)
   const setSearchStatus = useSetRecoilState(searchStatusState)
   const setInputValue = useSetRecoilState(searchFormState)
 
+  // それぞれのstateを初期化する
   const onClickReset = () => {
     setSearchPriority('')
     setSearchStatus('')

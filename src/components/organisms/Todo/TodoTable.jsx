@@ -16,7 +16,7 @@ export default function TodoTable({ curPage, itemLimit }) {
   // 表示中のtodo数を監視するstateを定義
   const [curItems, setCurItems] = useState([])
 
-  // 選択されたpriorityとstatusの値を管理するstateを呼び出し
+  // 選択されたpriorityとstatusとフォームに入力された値を管理するstateを呼び出し
   const selectedPriority = useRecoilValue(searchPriorityState)
   const selectedStatus = useRecoilValue(searchStatusState)
   const inputValue = useRecoilValue(searchFormState)
@@ -32,20 +32,22 @@ export default function TodoTable({ curPage, itemLimit }) {
     setCurItems(todos.slice(offset, offset + itemLimit))
   }, [curPage, todos.length])
 
-  // 選択されたpriorityかstatusを含むtodoを抽出
   useEffect(() => {
+    // 選択されたpriorityを含むtodoを抽出
     if (selectedPriority) {
       setIsSearched(true)
       const searchPriorityItems = todos.filter(
         (todo) => todo.priority === selectedPriority
       )
       setSelectedItems(searchPriorityItems)
+    // 選択されたstatusを含むtodoを抽出
     } else if (selectedStatus) {
       setIsSearched(true)
       const searchStatusItems = todos.filter(
         (todo) => todo.status === selectedStatus
       )
       setSelectedItems(searchStatusItems)
+    // titleに入力された文字列を含むtodoを抽出
     } else if (inputValue) {
       setIsSearched(true)
       const searchStatusItems = todos.filter(

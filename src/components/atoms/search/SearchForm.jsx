@@ -5,8 +5,9 @@ import { useRecoilState } from 'recoil'
 import { searchFormState } from '../../../hooks/SearchStatus'
 
 const SearchForm = () => {
+  // フォームに入力する値のstateとset関数をrecoilで呼び出し
   const [inputValue, setInputValue] = useRecoilState(searchFormState)
-
+  // フォームに入力した値でstateを更新する
   const onSearchInput = (e) => {
     setInputValue(e.target.value)
   }

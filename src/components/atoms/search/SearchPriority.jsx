@@ -5,9 +5,10 @@ import { useRecoilState } from 'recoil'
 import { searchPriorityState } from '../../../hooks/SearchStatus'
 
 export const SearchPriority = () => {
+  // selectボックスの値のstateとset関数をrecoilで呼び出し
   const [selectedPriority, setSelectedPriority] =
     useRecoilState(searchPriorityState)
-
+  // 選択された値でstateを更新する
   const onSearchPriority = (e) => {
     setSelectedPriority(e.target.value)
   }
