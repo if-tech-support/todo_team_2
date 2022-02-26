@@ -30,7 +30,7 @@ export default function TodoTable({ curPage, itemLimit }) {
   useEffect(() => {
     const offset = curPage * itemLimit
     setCurItems(todos.slice(offset, offset + itemLimit))
-  }, [curPage, todos.length])
+  }, [curPage, todos])
 
   useEffect(() => {
     // 選択されたpriorityを含むtodoを抽出
@@ -77,26 +77,28 @@ export default function TodoTable({ curPage, itemLimit }) {
             selectedItems.map((todo) => {
               return (
                 <TodoListChild
-                  id={todo.id}
-                  status={todo.status}
-                  created_day={todo.created_day}
-                  updated_day={todo.updated_day}
-                  title={todo.title}
-                  priority={todo.priority}
-                  todo={todo}
+                id={todo.id}
+                status={todo.status}
+                priority={todo.priority}
+                created_day={todo.created_day}
+                updated_day={todo.updated_day}
+                todo={todo}
+                title={todo.title}
+                key={todo.id}
                 />
               )
             })
           : curItems.map((todo, index) => {
               return (
                 <TodoListChild
-                  id={todo.id}
-                  status={todo.status}
-                  created_day={todo.created_day}
-                  updated_day={todo.updated_day}
-                  title={todo.title}
-                  priority={todo.priority}
-                  todo={todo}
+                id={todo.id}
+                status={todo.status}
+                priority={todo.priority}
+                created_day={todo.created_day}
+                updated_day={todo.updated_day}
+                todo={todo}
+                title={todo.title}
+                key={todo.id}
                 />
               )
             })}
