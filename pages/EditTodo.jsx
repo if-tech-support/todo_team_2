@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
-import { Box, Flex, Text } from '@chakra-ui/layout'
+import { Container, Flex, Text } from '@chakra-ui/layout'
 import Header from '../src/components/organisms/Header/Header'
 import Markdown from '../src/components/molecules/Markdown'
 import Title from '../src/components/atoms/input/Title'
@@ -30,7 +30,7 @@ export default function EditTodo() {
   return (
     <div>
       <Header />
-      <Box px="100px" pt={4}>
+      <Container maxW="container.xl" py="12px">
         <Flex justifyContent="space-between" alignItems="center" pb={5}>
           <Headline title="EDIT TODO" />
           <BackButton />
@@ -46,7 +46,7 @@ export default function EditTodo() {
           </Flex>
           <UpdateButton title={title} detail={detail} />
         </Flex>
-      </Box>
+      </Container>
     </div>
   )
 }

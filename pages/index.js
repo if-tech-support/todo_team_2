@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Box, Container, Flex, Heading, HStack, Spacer } from '@chakra-ui/react'
-import MainButtons from '../src/components/molecules/MainButtons'
+import { Box, Container, Flex, HStack, Spacer } from '@chakra-ui/react'
+import MainCreateButton from '../src/components/atoms/button/MainCreateButton'
 import Header from '../src/components/organisms/Header/Header'
 import SearchForm from '../src/components/atoms/search/SearchForm'
 import SearchStatus from '../src/components/atoms/search/SearchStatus'
@@ -8,6 +8,7 @@ import { SearchPriority } from '../src/components/atoms/search/SearchPriority'
 import TodoTable from '../src/components/organisms/Todo/TodoTable'
 import { ResetButton } from '../src/components/atoms/button/ResetButton'
 import PageRouting from "../src/components/molecules/PageRouting";
+import { Headline } from '../src/components/atoms/headline/Headline'
 
 export default function Home() {
 
@@ -20,10 +21,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Container maxW="container.xl">
-        <Heading as="h2" size="lg" my={2}>
-          TODO LIST
-        </Heading>
+      <Container maxW="container.xl" py="12px">
+        <Headline title="TODO LIST" />
         <Flex mb={8}>
           <HStack spacing="24px" align="flex-end">
             <Box>
@@ -35,12 +34,13 @@ export default function Home() {
             <Box>
               <SearchPriority />
             </Box>
-            <ResetButton />
+            <Box>
+              <ResetButton />
+            </Box>
+            <Box display="flex" justifyContent="right">
+              <MainCreateButton />
+            </Box>
           </HStack>
-          <Spacer />
-          <Box w="150px">
-            <MainButtons />
-          </Box>
         </Flex>
         <TodoTable curPage={curPage} itemLimit={itemLimit} />
         <Flex justifyContent="center">
@@ -50,7 +50,6 @@ export default function Home() {
             curPage={curPage}
           />
         </Flex>
-
       </Container>
     </>
   )
