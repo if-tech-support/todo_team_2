@@ -1,19 +1,35 @@
-import React from 'react';
-import { Text } from '@chakra-ui/react';
-import { Select } from '@chakra-ui/react';
+import React from 'react'
+import { Text } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react'
+import { useRecoilState } from 'recoil'
+import { searchPriorityState } from '../../../hooks/SearchStatus'
 
 export const SearchPriority = () => {
-   return (
-      <div>
-      <Text fontSize="18px" fontWeight="700" fontFamily="Gothic A1" pb={2}>PRIORITY</Text>
+  // selectボックスの値のstateとset関数をrecoilで呼び出し
+  const [selectedPriority, setSelectedPriority] =
+    useRecoilState(searchPriorityState)
+  // 選択された値でstateを更新する
+  const onSearchPriority = (e) => {
+    setSelectedPriority(e.target.value)
+  }
+
+  return (
+    <div>
+      <Text fontSize="18px" fontWeight="700" fontFamily="Gothic A1" pb={2}>
+        PRIORITY
+      </Text>
       <Select
-      placeholder="- - - - - - -"
-      color="#000000"
-      border="1px solid rgba(0, 0, 0, 0.8)" size="md" w={48}>
-      <option value="low">Low</option>
-      <option value="middle">Middle</option>
-      <option value="high">High</option>
+        placeholder="- - - - - - -"
+        color="#000000"
+        border="1px solid rgba(0, 0, 0, 0.8)"
+        size="md"
+        w={48}
+        onChange={onSearchPriority}
+      >
+        <option selected={selectedPriority === 'Low'}>Low</option>
+        <option selected={selectedPriority === 'Middle'}>Middle</option>
+        <option selected={selectedPriority === 'High'}>High</option>
       </Select>
-   </div>
-   )
+    </div>
+  )
 }

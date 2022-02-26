@@ -21,7 +21,9 @@ const TodoListChild = (props) => {
   // 引数　：ID、戻り値：無し
   const onClickTrash = (todoId) => {
     // todos内で押下されたTodoのidと等しくないものを抽出し定数に代入
-    const newTodos = todos.filter((todo) => todo.id !== todoId)
+    const newTodos = todos.filter((todo) =>
+      todo.id !== todoId
+    )
     // Todosを更新するメソッドを呼び出し、上述の処理結果で更新
     setTodos(newTodos)
   }
