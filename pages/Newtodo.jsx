@@ -60,7 +60,7 @@ export default function NewTodo() {
           title,
           detail,
           priority,
-          status: 'not_started',
+          status: 'NOT STARTED',
           created_day: currentTime,
           updated_day: currentTime,
         },

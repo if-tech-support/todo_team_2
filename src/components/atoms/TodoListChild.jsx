@@ -5,10 +5,11 @@ import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { todoState } from '../../hooks/TodoState'
 import { editTodoState } from '../../hooks/EditTodoState'
+import TodoPriority from './status/TodoPriority'
 
 const TodoListChild = (props) => {
   // TodoTableより引き渡されたpropsを展開
-  const { id, status, created_day, updated_day, title, todo } = props
+  const { id, status, priority, created_day, updated_day, title, todo } = props
   // TodoState.jsで定義したtodos,setTodosを呼び出し
   const [todos, setTodos] = useRecoilState(todoState)
   // 必要な情報を持って画面遷移するためにuseRouterを使用
@@ -37,6 +38,44 @@ const TodoListChild = (props) => {
     })
   }
 
+  // ステータスボタンをクリックしたら、Statusが変わります
+  const handleTodoStatus = (id) => {
+    const switchTodoStatus = JSON.parse(JSON.stringify(todos))
+
+    // findIndexでtodoのidがhandleTodoStatusに渡したidと一致するか探す
+    const calculatedId = todos.findIndex((todo) => todo.id === id)
+
+    if (switchTodoStatus[calculatedId].status === 'NOT STARTED') {
+      switchTodoStatus[calculatedId].status = 'DOING'
+    } else if (switchTodoStatus[calculatedId].status === 'DOING') {
+      switchTodoStatus[calculatedId].status = 'DONE'
+    } else if (switchTodoStatus[calculatedId].status === 'DONE') {
+      switchTodoStatus[calculatedId].status = 'NOT STARTED'
+    }
+    setTodos(switchTodoStatus)
+  }
+
+  // ステータスによってボタンの背景色が変更
+  const bgColor = (status) => {
+    if (status === 'NOT STARTED') {
+      return 'green.50'
+    } else if (status === 'DOING') {
+      return 'green.600'
+    } else if (status === 'DONE') {
+      return 'green.300'
+    }
+  }
+  // ステータスによってボタンのテキスト色が変更
+  const textColor = (status) => {
+    if (status === 'NOT STARTED') {
+      return 'black'
+    } else if (status === 'DOING') {
+      return 'white'
+    } else if (status === 'DONE') {
+      return 'black'
+    }
+  }
+
   return (
     <Tr key={id}>
       <Td
@@ -48,16 +87,20 @@ const TodoListChild = (props) => {
         {title}
       </Td>
       <Td>
-        <Button rounded="full" bg="green.50" size="lg" fontSize="12px">
+        <Button
+          rounded="full"
+          bg={bgColor(status)}
+          color={textColor(status)}
+          size="lg"
+          fontSize="12px"
+          _hover={{ opacity: 0.8 }}
+          onClick={() => handleTodoStatus(id)}
+        >
           {status}
         </Button>
       </Td>
       <Td>
-        <Select borderColor="tomato" fontSize="16px">
-          <option>High</option>
-          <option>Middle</option>
-          <option>Low</option>
-        </Select>
+        <TodoPriority id={id} priority={priority} />
       </Td>
       <Td fontSize="14px">{created_day}</Td>
       <Td fontSize="14px">{updated_day}</Td>
