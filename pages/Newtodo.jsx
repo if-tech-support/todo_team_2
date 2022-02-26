@@ -82,7 +82,7 @@ export default function NewTodo() {
   return (
     <>
       <Header />
-      <Container maxW="container.xl" height="100vh" py="12px">
+      <Container maxW="container.xl" py="12px">
         <Stack spacing={3}>
           <Flex>
             <Headline title="NEW TODO" />

@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Container maxW="container.xl" height="100vh" py="12px">
+      <Container maxW="container.xl" py="12px">
         <Headline title="TODO LIST" />
         <Flex mb={8}>
           <HStack spacing="24px" align="flex-end">
@@ -34,12 +34,13 @@ export default function Home() {
             <Box>
               <SearchPriority />
             </Box>
-            <ResetButton />
+            <Box>
+              <ResetButton />
+            </Box>
+            <Box display="flex" justifyContent="right">
+              <MainCreateButton />
+            </Box>
           </HStack>
-          <Spacer />
-          <Box display="flex" justifyContent="right">
-            <MainCreateButton />
-          </Box>
         </Flex>
         <TodoTable curPage={curPage} itemLimit={itemLimit} />
         <Flex justifyContent="center">

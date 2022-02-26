@@ -13,7 +13,7 @@ function ShowTodo() {
   return (
     <>
       <Header />
-      <Container maxW="container.xl" height="100vh">
+      <Container maxW="container.xl">
         <Flex py="12px">
           <Headline title="SHOW TODO" />
           <Spacer />

@@ -30,7 +30,7 @@ export default function EditTodo() {
   return (
     <div>
       <Header />
-      <Container maxW="container.xl" height="100vh" py="12px">
+      <Container maxW="container.xl" py="12px">
         <Flex justifyContent="space-between" alignItems="center" pb={5}>
           <Headline title="EDIT TODO" />
           <BackButton />
