@@ -10,7 +10,7 @@
   - miho (mihomihouk)
   - 中植　　（insideplant）　　+ デザイン作成
   - ayaka 　　（ayakamiyake7）
-  - yuri-i 　（london-newyork）12月末〜1月下旬までリーダー（Issue管理・進捗管理・連絡係等）
+  - yuri-i 　（london-newyork）12月末〜1月下旬までリーダー（Issue管理・進捗管理・連絡係等）その後実装
   - nao 　　（nao5100000）
   - Shogo 　　（washogo）
   - やぶい　　（iamyabui）
