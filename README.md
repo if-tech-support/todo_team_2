@@ -3,7 +3,6 @@
 ## 開発メンバー
 
 - 管理： ジュンペイ　（Junkichi89）
-- リーダー: yuri-i 　（Issue 管理など）
 - レビュワー: ジュンペイ, Hiro, メンバー全員
 - サポート: Hiro (hirooutdoor)
 
@@ -11,7 +10,7 @@
   - miho (mihomihouk)
   - 中植　　（insideplant）　　+ デザイン作成
   - ayaka 　　（ayakamiyake7）
-  - yuri-i 　（london-newyork）
+  - yuri-i 　（london-newyork）12月末〜1月下旬までリーダー（Issue管理・進捗管理・連絡係等）。1月以降は実装に参加。
   - nao 　　（nao5100000）
   - Shogo 　　（washogo）
   - やぶい　　（iamyabui）
@@ -35,12 +34,7 @@
 
 volta で管理、volta 以外をお使いの方は自身で以下のバージョンにあわせてください。
 
-<<<<<<< HEAD
->>>>>>> 5efbd923fe98f551918d04079c7737296a37bb73
-=======
->>>>>>> 3b0795ac2571ca2cd7997991cd602bec48c825c7
-> > > > > > > 807936ecc8420d917a999cf65c670f9e695677f5
-> > > > > > > https://volta.sh/
+https://volta.sh/
 
 ```
 "node": "14.17.0",
@@ -90,8 +84,6 @@ issue#３　 Todo の作成画面の実装の場合
 
 例）
 `git commit -m '#3 Todo作成画面の要素を追加し、レイアウト調整' `
-
-<<<<<<< HEAD
 
 #### 共同での issue 作業の流れ
 
